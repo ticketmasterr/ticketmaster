@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #000;
+}
+
+.header {
+  background-color: #003278;
+  padding: 10px;
+  text-align: center;
+}
+
+.logo {
+  width: 50px;
+}
+
+.event-banner {
+  background-color: #c8102e;
+  padding: 10px;
+  text-align: left;
+  position: relative;
+  color: white;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.event-info {
+  background-color: white;
+  padding: 10px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.team-logos {
+  display: flex;
+  align-items: center;
+}
+
+.team-logo {
+  width: 40px;
+  height: auto;
+}
+
+.vs {
+  margin: 0 8px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.event-text {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.seats-tag {
+  background-color: #003278;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.seat-selection {
+  text-align: center;
+  padding: 20px;
+}
+
+.ticket-table {
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.ticket-row:last-child {
+  border-bottom: none;
+}
+
+.ticket-cell {
+  flex: 1;
+  text-align: center;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.ticket-actions {
+  width: 100%;
+  background-color: #003278;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}

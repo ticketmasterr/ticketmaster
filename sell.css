@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('images/stadium-background.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+}
+
+.header {
+    background-color: #003278; /* Rangers Blue */
+    padding: 20px;
+    position: relative;
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.offer-banner {
+    background-color: #ffffff;
+    padding: 15px;
+}
+
+.offer-banner button {
+    background: none;
+    color: #003278;
+    font-weight: bold;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.event-section {
+    background: rgba(0, 0, 0, 0.7);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.event-card {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.event-date {
+    background: #003278;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.event-details {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.view-tickets {
+    background-color: #c8102e; /* Rangers Red */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+}
+
+.view-all {
+    background-color: #003278;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
