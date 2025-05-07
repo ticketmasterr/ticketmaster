@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forward Tickets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    .tickets {
+      margin-top: 20px;
+    }
+    .ticket {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+    .ticket input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: blue;
+    }
+    .forward-btn {
+      display: block;
+      width: 90%;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #007aff;
+      color: white;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      animation: slideUp 0.3s ease;
+    }
+    .modal-option {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      font-size: 18px;
+      color: #007aff;
+      cursor: pointer;
+    }
+    .modal-option:last-child {
+      border-bottom: none;
+      color: red;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .modal-background {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Forward Tickets</h2>
+  <h3>Rays @ Red Sox<br>Mon, Apr 5 - TBD<br>Fenway Park</h3>
+
+  <div class="tickets">
+    <div class="ticket">
+      <label>SEC SRLRF ROW SR SEAT 1</label>
+      <input type="checkbox">
+    </div>
+    <div class="ticket">
+      <label>SEC SRLRF ROW SR SEAT 2</label>
+      <input type="checkbox">
+    </div>
+    <div class="ticket">
+      <label>SEC SRLRF ROW SR SEAT 3</label>
+      <input type="checkbox">
+    </div>
+    <div class="ticket">
+      <label>SEC SRLRF ROW SR SEAT 4</label>
+      <input type="checkbox">
+    </div>
+  </div>
+
+  <button class="forward-btn" onclick="openModal()">Forward Tickets</button>
+
+  <div class="modal-background" id="modalBackground" onclick="closeModal()"></div>
+
+  <div class="modal" id="modal">
+    <div class="modal-option" onclick="selectOption('contacts')">Select from Contacts</div>
+    <div class="modal-option" onclick="navigateToEmail()">Via Email</div>
+    <div class="modal-option" onclick="selectOption('link')">Share Link</div>
+    <div class="modal-option" onclick="closeModal()">Cancel</div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('modal').style.display = 'block';
+      document.getElementById('modalBackground').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+      document.getElementById('modalBackground').style.display = 'none';
+    }
+
+    function selectOption(option) {
+      alert('You selected: ' + option);
+      closeModal();
+    }
+
+    function navigateToEmail() {
+      window.location.href = "email.html"; // <--- Go to new page
+    }
+  </script>
+
+</body>
+</html>
