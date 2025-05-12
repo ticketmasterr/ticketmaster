@@ -2,49 +2,153 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Forward Tickets</title>
+  <title>Select Tickets</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
-      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    h2, h3 {
-      text-align: center;
-      margin-bottom: 5px;
-    }
-    .tickets {
-      margin-top: 20px;
-    }
-    .ticket {
-      background: white;
-      border: 1px solid #ddd;
+    header {
+      background-color: white;
       padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+    .back-button {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+    }
+    .event-info {
+      background-color: white;
+      text-align: center;
+      padding: 15px 10px;
+      border-bottom: 1px solid #ddd;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
-      border-radius: 8px;
     }
-    .ticket input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      accent-color: blue;
+    .event-info .team-logo {
+      height: 40px;
+    }
+    .event-center {
+      flex-grow: 1;
+      text-align: center;
+    }
+    .event-center h2 {
+      font-size: 16px;
+      margin: 0;
+    }
+    .event-center p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: gray;
+    }
+    .tickets-list {
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: white;
+      padding-bottom: 120px;
+    }
+    .ticket-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 15px;
+      border-bottom: 1px solid #ddd;
+      font-size: 16px;
+    }
+    .ticket-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* Custom Checkbox */
+    .ticket-checkbox {
+      position: relative;
+      width: 24px;
+      height: 24px;
+    }
+    .ticket-checkbox input[type="checkbox"] {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+    .custom-checkmark {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #007aff;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .custom-checkmark::after {
+      content: '';
+      width: 10px;
+      height: 5px;
+      border: solid #007aff;
+      border-width: 0 0 2px 2px;
+      transform: rotate(-45deg);
+      opacity: 0;
+    }
+    .ticket-checkbox input[type="checkbox"]:checked + .custom-checkmark::after {
+      opacity: 1;
+    }
+
+    .ticket-info {
+      display: flex;
+      gap: 40px;
+      text-align: center;
+    }
+    .ticket-info div {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      color: gray;
+      font-weight: normal;
+    }
+    .ticket-info div small {
+      font-weight: bold;
+      color: black;
+      font-size: 15px; /* bigger numbers */
+      margin-top: 5px;
     }
     .forward-btn {
-      display: block;
-      width: 90%;
-      margin: 20px auto;
-      padding: 15px;
       background-color: #007aff;
       color: white;
-      text-align: center;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
       font-weight: bold;
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px;
+      position: fixed;
+      bottom: 2em;
+      left: 10px;
+      right: 10px;
+      border: none;
+      font-size: 16px;
       cursor: pointer;
     }
     /* Modal styles */
@@ -58,8 +162,9 @@
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
       box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-      padding: 20px;
+      padding: 20px 0;
       animation: slideUp 0.3s ease;
+      z-index: 1001;
     }
     .modal-option {
       padding: 15px;
@@ -73,44 +178,141 @@
       border-bottom: none;
       color: red;
     }
-    @keyframes slideUp {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
-    }
     .modal-background {
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.4);
+      z-index: 1000;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <h2>Forward Tickets</h2>
-  <h3>Rays @ Red Sox<br>Mon, Apr 5 - TBD<br>Fenway Park</h3>
+  <header>
+    <a href="ticks.html" class="back-button"><</a>
+    Foward Tickets 
+  </header>
 
-  <div class="tickets">
-    <div class="ticket">
-      <label>SEC SRLRF ROW SR SEAT 1</label>
-      <input type="checkbox">
+  <div class="event-info">
+    <img src="images/met.png" class="team-logo">
+<div class="event-center">
+  <h2>Mets @ Yankees</h2>
+  <p>Fri, May 16 • 7:05 PM CDT</p>
+  <p>YANKEE STADIUM</p>
+</div>
+<img src="images/ny2.png" alt="Rangers Logo" class="team-logo">
+  </div>
+
+  <div class="tickets-list">
+    <!-- Seats 2-8 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <label class="ticket-checkbox">
+          <input type="checkbox">
+          <span class="custom-checkmark"></span>
+        </label>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>2</small></div>
+        </div>
+      </div>
     </div>
-    <div class="ticket">
-      <label>SEC SRLRF ROW SR SEAT 2</label>
-      <input type="checkbox">
+
+    <!-- Repeat for other seats -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <label class="ticket-checkbox">
+          <input type="checkbox">
+          <span class="custom-checkmark"></span>
+        </label>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>3</small></div>
+        </div>
+      </div>
     </div>
-    <div class="ticket">
-      <label>SEC SRLRF ROW SR SEAT 3</label>
-      <input type="checkbox">
+
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <label class="ticket-checkbox">
+          <input type="checkbox">
+          <span class="custom-checkmark"></span>
+        </label>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>4</small></div>
+        </div>
+      </div>
     </div>
-    <div class="ticket">
-      <label>SEC SRLRF ROW SR SEAT 4</label>
-      <input type="checkbox">
+
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <label class="ticket-checkbox">
+          <input type="checkbox">
+          <span class="custom-checkmark"></span>
+        </label>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>5</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <label class="ticket-checkbox">
+          <input type="checkbox">
+          <span class="custom-checkmark"></span>
+        </label>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>6</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <label class="ticket-checkbox">
+          <input type="checkbox">
+          <span class="custom-checkmark"></span>
+        </label>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>7</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <label class="ticket-checkbox">
+          <input type="checkbox">
+          <span class="custom-checkmark"></span>
+        </label>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>8</small></div>
+        </div>
+      </div>
     </div>
   </div>
 
   <button class="forward-btn" onclick="openModal()">Forward Tickets</button>
 
+  <!-- Modal -->
   <div class="modal-background" id="modalBackground" onclick="closeModal()"></div>
 
   <div class="modal" id="modal">
@@ -125,19 +327,16 @@
       document.getElementById('modal').style.display = 'block';
       document.getElementById('modalBackground').style.display = 'block';
     }
-
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
       document.getElementById('modalBackground').style.display = 'none';
     }
-
     function selectOption(option) {
       alert('You selected: ' + option);
       closeModal();
     }
-
     function navigateToEmail() {
-      window.location.href = "email.html"; // <--- Go to new page
+      window.location.href = "email.html"; // Redirect to email page
     }
   </script>
 

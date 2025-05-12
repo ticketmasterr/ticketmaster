@@ -5,78 +5,231 @@
   <title>Forward via Email</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f9f9f9;
+    * {
+      box-sizing: border-box;
     }
-    .header {
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      height: 100vh;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Header for email forwarding */
+    .email-header {
+      background-color: white;
       padding: 15px;
-      background: white;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
       border-bottom: 1px solid #ddd;
     }
-    .header a {
+    .email-header .cancel {
+      position: absolute;
+      left: 15px;
+      top: 15px;
       color: #007aff;
+      font-size: 16px;
+      cursor: pointer;
       text-decoration: none;
-      font-weight: bold;
     }
-    .header h2 {
-      margin: 0;
-      font-size: 18px;
-      color: black;
+    .email-header .send {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      color: #007aff;
+      font-size: 16px;
+      cursor: pointer;
     }
-    .form {
-      padding: 20px;
+
+    /* Form styling */
+    .email-form {
+      background-color: white;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
     }
-    .form input, .form textarea {
+    .email-form input,
+    .email-form textarea {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: none;
+      border-bottom: 1px solid #ccc;
       font-size: 16px;
     }
-    .ticket-preview {
-      margin: 20px;
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
+
+    /* Event Info and Ticket Styles */
+    .event-info {
+      background-color: white;
+      text-align: center;
+      padding: 15px 10px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .ticket-preview h3 {
-      margin: 5px 0;
+    .event-info .team-logo {
+      height: 40px;
+    }
+    .event-center {
+      flex-grow: 1;
       text-align: center;
     }
-    .ticket-row {
-      border-top: 1px solid #eee;
-      padding: 10px 0;
+    .event-center h2 {
+      font-size: 16px;
+      margin: 0;
+    }
+    .event-center p {
+      margin: 4px 0;
       font-size: 14px;
+      color: gray;
+    }
+    .tickets-list {
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: white;
+      padding-bottom: 120px;
+    }
+    .ticket-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 15px;
+      border-bottom: 1px solid #ddd;
+      font-size: 16px;
+    }
+    .ticket-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .checkbox-space {
+      width: 24px;
+      height: 24px;
+    }
+    .ticket-info {
+      display: flex;
+      gap: 40px;
+      text-align: center;
+    }
+    .ticket-info div {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      color: gray;
+      font-weight: normal;
+    }
+    .ticket-info div small {
+      font-weight: bold;
+      color: black;
+      font-size: 15px;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <a href="index.html">Cancel</a>
-    <h2>Forward via Email</h2>
-    <a href="#">Send</a>
+  <!-- Email Forward Header -->
+  <div class="email-header">
+    <a href="#" class="cancel">Cancel</a>
+    Forward via Email
+    <span class="send">Send</span>
   </div>
 
-  <div class="form">
+  <!-- Email Form -->
+  <div class="email-form">
     <input type="email" placeholder="Email*" required>
     <input type="text" placeholder="Name">
-    <textarea placeholder="Message" rows="4"></textarea>
+    <textarea placeholder="Message" rows="3"></textarea>
   </div>
 
-  <div class="ticket-preview">
-    <h3>Rays @ Red Sox</h3>
-    <p style="text-align:center; color:gray;">Mon, Apr 5 - Fenway Park</p>
-    <div class="ticket-row">SEC SRLRF ROW SR SEAT 1</div>
-    <div class="ticket-row">SEC SRLRF ROW SR SEAT 2</div>
-    <div class="ticket-row">SEC SRLRF ROW SR SEAT 3</div>
+  <!-- Event Info -->
+  <div class="event-info">
+    <img src="images/met.png" class="team-logo">
+    <div class="event-center">
+      <h2>Mets @ Yankees</h2>
+      <p>Fri, May 16 • 7:05 PM CDT</p>
+      <p>YANKEE STADIUM</p>
+    </div>
+    <img src="images/ny2.png" class="team-logo">
+  </div>
+
+  <!-- Ticket List -->
+  <div class="tickets-list">
+    <!-- Ticket items for seats 2 to 8 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="checkbox-space"></div>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>2</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="checkbox-space"></div>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>3</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="checkbox-space"></div>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>4</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="checkbox-space"></div>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>5</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="checkbox-space"></div>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>6</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="checkbox-space"></div>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>7</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="checkbox-space"></div>
+        <div class="ticket-info">
+          <div>SECTION<small>214A</small></div>
+          <div>ROW<small>9</small></div>
+          <div>SEAT<small>8</small></div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </body>

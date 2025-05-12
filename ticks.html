@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tickets</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background-color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+
+    .back-button {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+    }
+
+    .event-info {
+      background-color: white;
+      text-align: center;
+      padding: 15px 10px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .event-info .team-logo {
+      height: 40px;
+    }
+
+    .event-center {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .event-center h2 {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .event-center p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: gray;
+    }
+
+    .tickets-list {
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: white;
+    }
+
+    .ticket-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 10px;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    .ticket-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .barcode-icon {
+      width: 24px;
+      height: 24px;
+      background: url('https://cdn-icons-png.flaticon.com/512/69/69524.png') no-repeat center center;
+      background-size: contain;
+    }
+
+    .ticket-info {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+    }
+
+    .ticket-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ticket-column .label {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .ticket-column .value {
+      font-size: 14px;
+      color: #000;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .open-link {
+      color: #007aff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    footer {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 10px; /* changed from 0 to 10px */
+  left: 0;
+  right: 0;
+}
+footer a {
+  color: #007aff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="viewtick.html" class="back-button"><</a>
+    Tickets
+  </header>
+
+  <!-- Event Info -->
+  <div class="event-info">
+    <img src="images/met.png" class="team-logo">
+    <div class="event-center">
+      <h2>Mets @ Yankees</h2>
+      <p>Fri, May 16 • 7:05 PM CDT</p>
+      <p>YANKEE STADIUM</p>
+    </div>
+    <img src="images/ny2.png" alt="Rangers Logo" class="team-logo">
+  </div>
+
+  <!-- Ticket List -->
+  <div class="tickets-list">
+
+    <!-- Seats 2 to 8 -->
+    <!-- Repeat for each seat -->
+    <!-- Seat 2 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="barcode-icon"></div>
+        <div class="ticket-info">
+          <div class="ticket-column">
+            <div class="label">SECTION</div>
+            <div class="value">214A</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">ROW</div>
+            <div class="value">9</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">SEAT</div>
+            <div class="value">2</div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="open-link">Open</a>
+    </div>
+
+    <!-- Seat 3 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="barcode-icon"></div>
+        <div class="ticket-info">
+          <div class="ticket-column">
+            <div class="label">SECTION</div>
+            <div class="value">214A</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">ROW</div>
+            <div class="value">9</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">SEAT</div>
+            <div class="value">3</div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="open-link">Open</a>
+    </div>
+
+    <!-- Seat 4 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="barcode-icon"></div>
+        <div class="ticket-info">
+          <div class="ticket-column">
+            <div class="label">SECTION</div>
+            <div class="value">214A</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">ROW</div>
+            <div class="value">9</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">SEAT</div>
+            <div class="value">4</div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="open-link">Open</a>
+    </div>
+
+    <!-- Seat 5 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="barcode-icon"></div>
+        <div class="ticket-info">
+          <div class="ticket-column">
+            <div class="label">SECTION</div>
+            <div class="value">214A</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">ROW</div>
+            <div class="value">9</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">SEAT</div>
+            <div class="value">5</div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="open-link">Open</a>
+    </div>
+
+    <!-- Seat 6 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="barcode-icon"></div>
+        <div class="ticket-info">
+          <div class="ticket-column">
+            <div class="label">SECTION</div>
+            <div class="value">214A</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">ROW</div>
+            <div class="value">9</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">SEAT</div>
+            <div class="value">6</div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="open-link">Open</a>
+    </div>
+
+    <!-- Seat 7 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="barcode-icon"></div>
+        <div class="ticket-info">
+          <div class="ticket-column">
+            <div class="label">SECTION</div>
+            <div class="value">214A</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">ROW</div>
+            <div class="value">9</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">SEAT</div>
+            <div class="value">7</div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="open-link">Open</a>
+    </div>
+
+    <!-- Seat 8 -->
+    <div class="ticket-item">
+      <div class="ticket-left">
+        <div class="barcode-icon"></div>
+        <div class="ticket-info">
+          <div class="ticket-column">
+            <div class="label">SECTION</div>
+            <div class="value">214A</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">ROW</div>
+            <div class="value">9</div>
+          </div>
+          <div class="ticket-column">
+            <div class="label">SEAT</div>
+            <div class="value">8</div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="open-link">Open</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <a href="#">Sell Tickets</a>
+    <a href="tickaction.html">Forward Tickets</a>
+  </footer>
+
+</body>
+
+</html>

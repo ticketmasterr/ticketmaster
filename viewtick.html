@@ -1,69 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Details - Dodgers at Rangers</title>
-  <link rel="stylesheet" href="event-style.css">
+  <title>Dodgers at Rangers - Tickets</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-bar {
+      background-color: #002d72;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+    .top-bar img {
+      height: 40px;
+    }
+    .top-bar-icons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .event-header {
+      background-color: #ba0c2f;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .event-main {
+      background-color: white;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .event-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .teams {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .team-logos {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .team-logos img {
+      height: 30px;
+    }
+    .teams-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+    }
+    .teams-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .teams-info strong {
+      font-size: 16px;
+    }
+    .seats-badge {
+      background-color: #002d72;
+      color: white;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    .access-text {
+      text-align: center;
+      padding: 15px;
+      background-color: #eeeeee;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .ticket-list {
+      background-color: white;
+      flex-grow: 1;
+      padding-bottom: 70px; /* Space for footer */
+    }
+    .ticket-item {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .ticket-item:last-child {
+      border-bottom: none;
+    }
+    .ticket-actions {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #002d72;
+      color: white;
+      text-align: center;
+      padding: 18px 0;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .ticket-item {
+        font-size: 12px;
+      }
+      .teams-info strong {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-  <header class="header">
-    <img src="images/rangers-logo.png" alt="Texas Rangers Logo" class="logo">
-  </header>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <img src="images/ny2.png" alt="Rangers Logo">
+    <div class="top-bar-icons">
+      <img src="https://cdn-icons-png.flaticon.com/512/34/34568.png" alt="Cart" style="height: 20px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="Menu" style="height: 20px;">
+    </div>
+  </div>
 
-  <section class="event-banner">
-    <a href="sell.html" class="back-button">&larr; Event Details</a>
-    <div class="event-info">
-      <div class="team-logos">
-        <img src="images/dodgers-logo.png" alt="Dodgers Logo" class="team-logo">
-        <span class="vs">at</span>
-        <img src="images/ranger-logo.png" alt="Rangers Logo" class="team-logo">
+  <!-- Event Header -->
+  <div class="event-header">
+    EVENT DETAILS
+  </div>
+
+  <!-- Main Event Info -->
+  <div class="event-main">
+    <div class="event-top">
+      <div class="teams-info">
+        <div class="team-logos">
+          <img src="images/met.png" alt="Dodgers Logo">
+          <span>at</span>
+          <img src="images/ny2.png" alt="Rangers Logo">
+        </div>
+        <div class="teams-text">
+          <strong>METS AT YANKEES</strong>
+          <span>Fri, May 16, 2025 7:05PM CDT</span>
+          <span>YANKEE STADIUM</span>
+        </div>
       </div>
-      <div class="event-text">
-        <h2>Dodgers at Rangers</h2>
-        <p>Fri, Apr 18, 2025 | 7:05 PM CDT</p>
-        <p>Globe Life Field</p>
+      <div class="seats-badge">7 Seats</div>
+    </div>
+  </div>
+
+  <!-- Access Text -->
+  <div class="access-text">
+    TO ACCESS YOUR TICKET(S), PLEASE SELECT A SEAT BELOW.
+  </div>
+
+  <!-- Ticket List -->
+  <div class="ticket-list">
+    <div class="ticket-item">
+      <div>
+        <div>SECTION</div>
+        <div style="font-weight: normal;">Section 214A</div>
       </div>
-      <div class="seats-tag">
-        4 Seats
+      <div>
+        <div>ROW</div>
+        <div style="font-weight: normal;">9</div>
+      </div>
+      <div>
+        <div>SEAT</div>
+        <div style="font-weight: normal;">2</div>
       </div>
     </div>
-  </section>
 
-  <section class="seat-selection">
-    <p>To access your ticket(s), please select a seat below.</p>
-
-    <div class="ticket-table">
-      <div class="ticket-row">
-        <div class="ticket-cell"><strong>Section</strong> 121</div>
-        <div class="ticket-cell"><strong>Row</strong> 10</div>
-        <div class="ticket-cell"><strong>Seat</strong> 13</div>
+    <div class="ticket-item">
+      <div>
+        <div>SECTION</div>
+        <div style="font-weight: normal;">Section 214A</div>
       </div>
-      <div class="ticket-row">
-        <div class="ticket-cell"><strong>Section</strong> 121</div>
-        <div class="ticket-cell"><strong>Row</strong> 10</div>
-        <div class="ticket-cell"><strong>Seat</strong> 14</div>
+      <div>
+        <div>ROW</div>
+        <div style="font-weight: normal;">9</div>
       </div>
-      <div class="ticket-row">
-        <div class="ticket-cell"><strong>Section</strong> 121</div>
-        <div class="ticket-cell"><strong>Row</strong> 10</div>
-        <div class="ticket-cell"><strong>Seat</strong> 15</div>
-      </div>
-      <div class="ticket-row">
-        <div class="ticket-cell"><strong>Section</strong> 121</div>
-        <div class="ticket-cell"><strong>Row</strong> 10</div>
-        <div class="ticket-cell"><strong>Seat</strong> 16</div>
+      <div>
+        <div>SEAT</div>
+        <div style="font-weight: normal;">3</div>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <a href="tickaction.html" class="ticket-actions">Ticket Actions</a>
-  </footer>
+    <div class="ticket-item">
+      <div>
+        <div>SECTION</div>
+        <div style="font-weight: normal;">Section 214A</div>
+      </div>
+      <div>
+        <div>ROW</div>
+        <div style="font-weight: normal;">9</div>
+      </div>
+      <div>
+        <div>SEAT</div>
+        <div style="font-weight: normal;">4</div>
+      </div>
+    </div>
+
+    <div class="ticket-item">
+      <div>
+        <div>SECTION</div>
+        <div style="font-weight: normal;">Section 214A</div>
+      </div>
+      <div>
+        <div>ROW</div>
+        <div style="font-weight: normal;">9</div>
+      </div>
+      <div>
+        <div>SEAT</div>
+        <div style="font-weight: normal;">5</div>
+      </div>
+    </div>
+
+    <div class="ticket-item">
+      <div>
+        <div>SECTION</div>
+        <div style="font-weight: normal;">Section 214A</div>
+      </div>
+      <div>
+        <div>ROW</div>
+        <div style="font-weight: normal;">9</div>
+      </div>
+      <div>
+        <div>SEAT</div>
+        <div style="font-weight: normal;">6</div>
+      </div>
+    </div>
+
+    <div class="ticket-item">
+      <div>
+        <div>SECTION</div>
+        <div style="font-weight: normal;">Section 214A</div>
+      </div>
+      <div>
+        <div>ROW</div>
+        <div style="font-weight: normal;">9</div>
+      </div>
+      <div>
+        <div>SEAT</div>
+        <div style="font-weight: normal;">7</div>
+      </div>
+    </div>
+
+    <div class="ticket-item">
+      <div>
+        <div>SECTION</div>
+        <div style="font-weight: normal;">Section 214A</div>
+      </div>
+      <div>
+        <div>ROW</div>
+        <div style="font-weight: normal;">9</div>
+      </div>
+      <div>
+        <div>SEAT</div>
+        <div style="font-weight: normal;">8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Actions Link -->
+  <a href="ticks.html" class="ticket-actions">TICKET ACTIONS</a>
 
 </body>
-
 </html>
