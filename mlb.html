@@ -1,225 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Texas Rangers Tickets</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<html>
+  <body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f4f4; padding:20px 0;">
+      <tr>
+        <td align="center">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; background-color:#ffffff; border-radius:8px; overflow:hidden;">
+            
+            <!-- Header Row -->
+            <tr>
+              <td style="padding:20px;">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <!-- Yankees Logo - Left -->
+                    <td align="left" valign="middle">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAMFBMVEUAAAD///8AAAD8/Pz09PT5+fn29vbv7+/39/fu7u7w8PD7+/v4+Pj09fXs7Ozn5+fY2Njo6OgbqJ3tAAAADXRSTlMAEEBQYKChvb/A4Ojr7/P19m+7I4UAAACLSURBVHja7dMxDsAgDATBXv//KZqwBlVjMfQ0x+lV1MCgRAwIECAAAECBAgQIDBP4nHgZKPb6Bi5bR6z9SUpS3jKTkicMbAfAO4FwGUcQAc0AgHUBgHoDgHkOwDgFwGkS+B8AeKXeA9kOH/DAAAAAElFTkSuQmCC" alt="Yankees Logo" width="40" style="display:inline-block;">
+                    </td>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-    }
+                    <!-- My Account - Right -->
+                    <td align="right" valign="middle">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAdVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+r2a+BAAAAKnRSTlMAAQIDBAUGBwgJCgsMDQ8QERITFBUWFxgZGhscHR4fICEiIyQlJygqKis7E2N1oAAAAM9JREFUKM+VzFsOgCAMBdEHoaL7t97/vz4UhBDLSzODAXUXQMK8Axk4ymFOuh4NSW4YbWYFFLVJz0vZ0PYTuZaqNgtxnCEU9roDhj2bM03iqZxPQH6Um7Pg+QL1dAI9QvZ9wOJ4W89XxDbjAacj0yfXCI63HnRAAAAAElFTkSuQmCC" alt="My Account" width="20" style="vertical-align:middle; margin-right:6px;">
+                      <span style="font-size:14px; color:#666666; vertical-align:middle;">My Account</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
 
-    .top-bar {
-      background-color: #003263;
-      color: white;
-      padding: 10px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+            <!-- Title -->
+            <tr>
+              <td style="padding:20px; text-align:center;">
+                <h2 style="margin:0; font-size:20px; color:#333;">Accept Your Tickets<br>from</h2>
+                <p style="font-size:12px; color:#888888; margin-top:5px;">This email is NOT your ticket.</p>
+              </td>
+            </tr>
 
-    .top-bar-left img {
-      height: 28px;
-    }
+            <!-- Body -->
+            <tr>
+              <td style="padding:0 20px 20px 20px; font-size:14px; color:#444444; text-align:left;">
+                <p style="margin:0 0 15px 0;">Claim your tickets by tapping the <strong>Accept Tickets</strong> button below to complete the transfer and agree to our <a href="#" style="color:#0056b3; text-decoration:none;">Terms of Use</a>.</p>
+                <p style="margin:0 0 20px 0;">If you decide to decline this ticket transfer offer, no action is required on your part.</p>
+                <div style="text-align:center; margin-bottom:30px;">
+                  <a href="#" style="display:inline-block; background-color:#0056b3; color:#ffffff; padding:12px 24px; text-decoration:none; font-weight:bold; border-radius:4px;">Accept Tickets</a>
+                </div>
+                <p style="text-align:center; font-size:12px; color:#888;">Accept by Tue • Apr 1, 2025 • 11:55 PM</p>
+              </td>
+            </tr>
 
-    .top-bar-right img {
-      height: 24px;
-      margin-left: 16px;
-    }
-
-    .hero-section {
-      background-image: url("images/stadium-background.jpg");
-      background-size: cover;
-      background-position: center;
-      height: 180px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-      text-align: center;
-      padding: 20px;
-    }
-
-    .hero-section img {
-      height: 80px;
-      margin-bottom: 10px;
-    }
-
-    .hero-section h2 {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .offers-bar {
-      background: white;
-      padding: 16px;
-      text-align: center;
-      border-top: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .offers-content {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #003263;
-    }
-
-    .offers-logo {
-      height: 30px;
-    }
-
-    .red-line, .blue-line {
-      width: 2px;
-      height: 28px;
-    }
-
-    .red-line {
-      background-color: #c8102e;
-    }
-
-    .blue-line {
-      background-color: #003263;
-    }
-
-    .next-event {
-      text-align: left;
-      margin: 20px;
-      font-weight: bold;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .event-box {
-      background: white;
-      margin: 10px 20px;
-      border-radius: 10px;
-      padding: 16px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .event-date {
-      background-color: #003263;
-      color: white;
-      text-align: center;
-      padding: 4px;
-      width: 60px;
-      border-radius: 4px;
-      float: left;
-      margin-right: 12px;
-    }
-
-    .event-date span {
-      display: block;
-      background: white;
-      color: #003263;
-      font-weight: bold;
-      padding: 4px 0;
-      border-radius: 2px;
-      margin-top: 2px;
-    }
-
-    .event-info h3 {
-      font-size: 15px;
-      color: #003263;
-      margin: 0;
-    }
-
-    .event-info p {
-      font-size: 14px;
-      margin: 2px 0;
-    }
-
-    .view-tickets {
-      background: #c8102e;
-      color: white;
-      text-align: center;
-      font-weight: bold;
-      padding: 12px;
-      border-radius: 5px;
-      margin-top: 12px;
-      cursor: pointer;
-    }
-
-    .inventory-button {
-      display: block;
-      background-color: #003263;
-      color: white;
-      text-align: center;
-      padding: 12px;
-      margin: 30px auto;
-      width: 85%;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 15px;
-      text-decoration: none;
-    }
-
-    @media (min-width: 600px) {
-      .event-box {
-        max-width: 500px;
-        margin: 30px auto;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="top-bar">
-    <div class="top-bar-left">
-      <img src="images/rangers-logo.png" alt="Texas Rangers Logo">
-    </div>
-    <div class="top-bar-right">
-      <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Cart Icon">
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Menu Icon">
-    </div>
-  </div>
-
-  <div class="hero-section">
-    <img src="images/rangers-logo.png">
-    <h2>Hi, James Sandefur</h2>
-  </div>
-
-  <div class="offers-bar">
-    <div class="offers-content">
-      <img class="offers-logo" src="images/Tlogo.png" alt="T Logo">
-      <div class="red-line"></div>
-      <div class="blue-line"></div>
-      CLICK HERE TO SEE YOUR OFFERS
-      <div class="red-line"></div>
-      <div class="blue-line"></div>
-    </div>
-  </div>
-
-  <div class="next-event">MY NEXT EVENT</div>
-
-  <div class="event-box">
-    <div class="event-date">
-      APR
-      <span>18</span>
-    </div>
-    <div class="event-info">
-      <h3>DODGERS AT RANGERS</h3>
-      <p>Friday | 7:05PM CDT</p>
-      <p>GLOBE LIFE FIELD</p>
-    </div>
-    <div style="clear: both;"></div>
-    <div class="view-tickets">VIEW TICKETS (2)</div>
-  </div>
-
-  <a href="#" class="inventory-button">VIEW ALL TICKET INVENTORY</a>
-
-</body>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>
