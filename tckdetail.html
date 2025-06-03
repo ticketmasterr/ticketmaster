@@ -1,114 +1,184 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link rel="stylesheet" href="tckdetail.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css ">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Game Ticket</title>
 </head>
 
-<body>
-
-  <div class="first">
-    <span class="cancel">
-      <a class="x" href="ticket.html">
-        <i class="fa-regular fa-xmark"></i>
-    </span>
-    </a>
-    Ticket Details
+<body style="margin: 0; font-family: Arial, sans-serifalong with the following CSS for consistency across browsers">
+ <style>
+  body {
+   margin: 0;
+   font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+   background-color: #202329;
+   color: #fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+  }
+  
+  .main-container {
+   background-color: #28292D;
+   width: 80%;
+   max-width: 400px;
+   padding: 0px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .event-container,
+  .seat-container {
+   width: ;
+   margin: 0 auto;
+   border: 0.5px solid #1E1E1B;
+   /* Thinner, less noticeable border */
+   padding: 15px;
+   
+  }
+  
+  .seat-container {
+   border-top: none;
+  }
+  
+  .event-container {
+   margin-bottom: 0;
+   /* No space between containers */
+  }
+  
+  .seat-container {
+   margin-top: 0;
+   /* No space between containers */
+   margin-bottom: 0;
+  }
+  
+  .event-container h2 {
+   margin: 0;
+   font-size: 1.2em;
+   font-weight: bold;
+  }
+  
+  .event-container p,
+  .seat-container p {
+   font-size: 0.9em;
+   font-weight: bold;
+   color: #ccc;
+   margin: 8px 0;
+  }
+  
+  .logo-img {
+   width: 100%;
+   height: 10em;
+   margin: 0 auto;
+   margin-top: 0;
+   margin-bottom: 0;
+   /* No space between image and seat container */
+   display: block;
+  }
+  
+  .accept-button {
+   margin-top: 20px;
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+  }
+  
+  .accept-button button {
+   background-color: #4a5de1;
+   color: black;
+   border: none;
+   padding: 9px;
+   width: 100%;
+   font-size: 0.83em;
+   font-weight: 700;
+   cursor: pointer;
+  }
+  
+  .terms {
+   font-size: 0.8em;
+   color: #ccc;
+   margin-top: 15px;
+   text-align: center;
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
+   
+  }
+  
+  .terms p {
+   margin: 8px 0;
+   font-size: 8px;
+  }
+  
+  .third {
+   color: #F5F5F5;
+   font-size: 13px;
+   font-weight: 700;
+   word-spacing: 2px;
+   margin-bottom: 4px;
+  }
+  
+  .dif {
+   font-size: 11px;
+   color: #858793;
+   font-weight: 700;
+   word-spacing: 2px;
+   padding: 4px 0 0 0;
+  }
+  
+  .sec {
+   font-size: 11px;
+   font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+   font-weight: 700;
+   color: #DBDBDB;
+  }
+  
+  .col {
+   background-color: #202329;
+   margin: 0;
+   font-size: 11px;
+   border: solid #202329  ;
+  }
+  
+  .last {
+   padding: 5px 0;
+  }
+ </style>
+ </head>
+ 
+ <body>
+  <div class="main-container">
+   <!-- Event Details Container -->
+   <div class="event-container">
+    <div class="third">Third Round: Oilers at Stars Rd 3 Hm Gm 1</div>
+    <div class="dif">Wed, May 21 @ 7:00 PM</div>
+    <div class="dif">American Airlines Center, Dallas, TX</div>
+   </div>
+   
+   <!-- Seat Information Container -->
+   <div class="seat-container">
+    <div class="sec">Section 330, Row J, Seat 22</div>
+    <div class="sec">Section 330, Row J, Seat 23</div>
+   </div>
+   
+   <!-- Team Logo -->
+   <img src="images/r.jpeg" alt="Dallas Stars Logo" class="logo-img">
+   
+   <div class="col">
+    
+    <!-- Accept Tickets Button -->
+    <div class="accept-button">
+     <button>ACCEPT TICKETS</button>
+    </div>
+    
+    <!-- Terms and Conditions -->
+    <div class="terms">
+     <div class="last">By clicking "ACCEPT TICKETS", you agree to our Terms of Use and any applicable ticket back terms.</div>
+     <div class="last">IF the tickets were obtained fraudulently by the person transferring them, they may be cancelled at any time - removed from your</div>
+    </div>
+   </div>
   </div>
-
-  <div class="contain">
-    <div class="bold">
-      Seat Location
-    </div>
-    <div class="light">
-      333 / 5 / 12, 13, 14, 15
-    </div>
-  </div>
-
-  <div class="contain">
-    <div class="bold">
-      Cotton Bowl (Texas vs Ohio State) - College Football Playoff Semifinals
-    </div>
-    <div class="light">
-      10 Jan • Fri • 18:30 • 2025
-    </div>
-  </div>
-
-  <div class="contain">
-    <div class="bold">
-      Entry Info
-    </div>
-    <div class="light">
-      SEC 333
-    </div>
-  </div>
-
-  <div class="contain">
-    <div class="bold">
-      Ticket Info
-    </div>
-    <div class="light">
-      Cotton Bowl (Texas vs Ohio State) - College Football Playoff Semifinals• <br>
-      AT&T stadium, Arlington, Texas, USA.
-    </div>
-  </div>
-
-
-  <div class="contain">
-    <div class="bold">
-      Barcode Number
-    </div>
-    <div class="light">
-      2446846274792372286GF
-    </div>
-  </div>
-
-
-  <div class="contain">
-    <div class="bold">
-      Order Number
-    </div>
-    <div class="light">
-      02-10138/FGR
-    </div>
-  </div>
-
-
-  <div class="contain">
-    <div class="bold">
-      Purchase
-    </div>
-    <div class="light">
-      Nov 25,2024 - 10:05 PM
-    </div>
-  </div>
-
-  <div class="contain">
-    <div class="bold">
-      Ticker Type
-    </div>
-    <div class="light">
-      LOWER LIMIT
-    </div>
-  </div>
-
-
-  <div class="contain">
-    <div class="bold">
-      Terms of Service
-    </div>
-    <div class="light">
-      This ticket is a revocable license to attend the event
-      listed on the fron of the ticket and is subjet to the full terms found at www.ticketmaster.com. This Purchase Policy applies to any purchases on our Site made on or after January 1,2021, including any primary ticket sales and ticket resale transactions, such as Fan-to-Fan.
-      Please also review our Terms of Use, which govern your use of our Site, and your purchase, possession, or use of any Live Nation or Ticketmaster tickets, products, or services. If you have any questions, please contact us.
-    </div>
-  </div>
-
-
-</body>
-
+ </body>
+ 
 </html>
