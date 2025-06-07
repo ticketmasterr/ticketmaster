@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticketmaster Ticket Transfer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #ccc;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 450px;
+      margin: auto;
+      background-color: #202329;
+    }
+
+    .header {
+      background-color: #4a5de1;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .header span {
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .message {
+      font-size: 18px;
+      font-weight: 900;
+      text-align: center;
+      padding: 25px 20px 10px;
+      line-height: 1.4;
+      word-spacing: 4px;
+    }
+
+    .message span.new-line {
+      display: block;
+    }
+
+    .progress-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .progress-bar::before {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 7%;
+      right: 7%;
+      height: 2px;
+      background-color: #666;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .icon.received {
+      background-color: #0070f3;
+      color: white;
+    }
+
+    .icon.accepted,
+    .icon.complete {
+      background-color: white;
+      color: #1a1a1a;
+    }
+
+    .label {
+      font-size: 10px;
+      color: #ccc;
+    }
+
+    .main-container {
+      background-color: #28292D;
+      margin: 0 auto;
+      padding-bottom: 10px;
+      width: 80%;
+    }
+
+    .event-container,
+    .seat-container {
+      border: 0.5px solid #1E1E1B;
+      padding: 15px;
+    }
+
+    .seat-container {
+      border-top: none;
+      margin-top: 0;
+    }
+
+    .event-container {
+      margin-bottom: 0;
+    }
+
+    .third {
+      color: #F5F5F5;
+      font-size: 13px;
+      font-weight: 700;
+      word-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .dif {
+      font-size: 11px;
+      color: #858793;
+      font-weight: 700;
+      word-spacing: 2px;
+      padding: 4px 0 0 0;
+    }
+
+    .sec {
+      font-size: 11px;
+      font-weight: 700;
+      color: #DBDBDB;
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 10em;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .accept-button {
+      margin-top: 20px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .accept-button button {
+      background-color: #4a5de1;
+      color: black;
+      border: none;
+      padding: 9px;
+      width: 100%;
+      font-size: 0.83em;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .terms {
+      font-size: 0.8em;
+      color: #ccc;
+      margin-top: 15px;
+      text-align: center;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .terms p {
+      margin: 8px 0;
+      font-size: 8px;
+    }
+
+    .last {
+      padding: 5px 0;
+    }
+
+    @media (max-width: 500px) {
+      .message {
+        font-size: 16px;
+      }
+
+      .third, .dif, .sec {
+        font-size: 10px;
+      }
+
+      .accept-button button {
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span>ticketmaster</span>
+    </div>
+    <div class="message">
+      Your Ticket Transfer From - Is
+      <span class="new-line">Ready To Be Accepted!</span>
+    </div>
+    
+    
+     <img sizes="" style="width: 100%" srcset="" src="https://i.imgur.com/YendHLf.jpeg" alt="">
+    
+
+    <div class="main-container">
+      <div class="event-container">
+        <div class="third">Third Round: Oilers at Stars Rd 3 Hm Gm 1</div>
+        <div class="dif">Wed, May 21 @ 7:00 PM</div>
+        <div class="dif">American Airlines Center, Dallas, TX</div>
+      </div>
+
+      <div class="seat-container">
+        <div class="sec">Section 330, Row J, Seat 22</div>
+        <div class="sec">Section 330, Row J, Seat 23</div>
+      </div>
+
+      <img src="images/r.jpeg" alt="Dallas Stars Logo" class="logo-img">
+
+      <div class="accept-button">
+        <button>ACCEPT TICKETS</button>
+      </div>
+
+      <div class="terms">
+        <div class="last">By clicking "ACCEPT TICKETS", you agree to our Terms of Use and any applicable ticket back terms.</div>
+        <div class="last">If the tickets were obtained fraudulently by the person transferring them, they may be canceled at any time, removed from your account.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
