@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Event Details - Ticketmaster</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, ‘Helvetica Neue’, sans-serif;
+background: #f2f2f7;
+display: flex;
+justify-content: center;
+min-height: 100vh;
+}
+
+.phone {
+width: 100%;
+max-width: 390px;
+background: #fff;
+min-height: 100vh;
+position: relative;
+display: flex;
+flex-direction: column;
+}
+
+/* Safari-style top bar */
+.safari-bar {
+background: #f2f2f7;
+padding: 10px 16px 8px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+border-bottom: 1px solid #d1d1d6;
+}
+.safari-done {
+color: #026cdf;
+font-size: 17px;
+font-weight: 400;
+min-width: 44px;
+}
+.safari-url {
+display: flex;
+align-items: center;
+gap: 5px;
+font-size: 13px;
+color: #1c1c1e;
+font-weight: 500;
+}
+.safari-url svg { color: #6e6e73; }
+.safari-actions {
+display: flex;
+gap: 14px;
+align-items: center;
+min-width: 44px;
+justify-content: flex-end;
+}
+.safari-actions span {
+font-size: 15px;
+color: #1c1c1e;
+font-weight: 400;
+cursor: pointer;
+}
+
+/* Blue nav header */
+.tm-nav {
+background: #026cdf;
+display: flex;
+align-items: center;
+padding: 0 16px;
+height: 44px;
+position: relative;
+}
+.tm-nav-back {
+color: white;
+font-size: 22px;
+font-weight: 300;
+line-height: 1;
+padding: 8px 8px 8px 0;
+cursor: pointer;
+}
+.tm-nav-title {
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+color: white;
+font-size: 17px;
+font-weight: 600;
+white-space: nowrap;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+padding: 10px 16px 6px;
+background: #fff;
+}
+.breadcrumb span {
+font-size: 12px;
+color: #888;
+}
+.breadcrumb a {
+font-size: 12px;
+color: #888;
+text-decoration: none;
+}
+.breadcrumb .sep { margin: 0 4px; color: #bbb; }
+
+/* Content */
+.content {
+background: #fff;
+flex: 1;
+}
+
+/* Event title */
+.event-title {
+padding: 10px 16px 14px;
+font-size: 22px;
+font-weight: 700;
+color: #111;
+line-height: 1.2;
+border-bottom: 1px solid #f0f0f0;
+}
+
+/* Event info row */
+.event-info-row {
+display: flex;
+gap: 14px;
+padding: 14px 16px;
+align-items: flex-start;
+border-bottom: 1px solid #f0f0f0;
+}
+.event-thumb {
+width: 72px;
+height: 72px;
+border-radius: 4px;
+overflow: hidden;
+flex-shrink: 0;
+background: #6b5a3e;
+}
+.event-thumb img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.event-thumb-placeholder {
+width: 100%;
+height: 100%;
+background: linear-gradient(135deg, #8b7355 0%, #5c4a2a 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.event-thumb-placeholder svg { opacity: 0.5; }
+
+.event-meta { flex: 1; }
+.event-datetime {
+font-size: 14px;
+font-weight: 600;
+color: #111;
+margin-bottom: 4px;
+}
+.event-venue {
+font-size: 14px;
+color: #026cdf;
+font-weight: 500;
+margin-bottom: 4px;
+cursor: pointer;
+}
+.event-share {
+font-size: 13px;
+color: #026cdf;
+margin-bottom: 6px;
+cursor: pointer;
+}
+.event-address {
+font-size: 13px;
+color: #026cdf;
+line-height: 1.4;
+cursor: pointer;
+}
+
+/* Get Tickets Ready box */
+.tickets-ready-box {
+margin: 14px 16px;
+background: #fdf0f8;
+border: 1px solid #e8c8dc;
+border-radius: 10px;
+padding: 14px;
+}
+.tickets-ready-title {
+font-size: 14px;
+font-weight: 600;
+color: #333;
+margin-bottom: 12px;
+}
+.tickets-ready-body {
+display: flex;
+gap: 12px;
+align-items: flex-start;
+margin-bottom: 14px;
+}
+.wallet-icon {
+width: 36px;
+height: 36px;
+border: 1.5px solid #ccc;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+background: #fff;
+}
+.tickets-ready-text {
+font-size: 13px;
+color: #444;
+line-height: 1.5;
+flex: 1;
+}
+.view-save-btn {
+display: block;
+width: 100%;
+background: #026cdf;
+color: white;
+text-align: center;
+padding: 12px;
+font-size: 14px;
+font-weight: 600;
+border-radius: 6px;
+border: none;
+cursor: pointer;
+text-decoration: none;
+}
+
+/* Bottom action bar */
+.bottom-bar {
+background: #fff;
+border-top: 1px solid #e5e5e5;
+padding: 10px 0 20px;
+display: flex;
+justify-content: space-around;
+align-items: flex-start;
+position: sticky;
+bottom: 0;
+}
+.bottom-action {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 5px;
+flex: 1;
+cursor: pointer;
+}
+.bottom-action-icon {
+width: 28px;
+height: 28px;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0.35;
+}
+.bottom-action-label {
+font-size: 11px;
+color: #999;
+text-align: center;
+}
+.contact-btn {
+background: #fff;
+border: 1px solid #ccc;
+border-radius: 8px;
+padding: 8px 16px;
+font-size: 14px;
+color: #333;
+font-weight: 400;
+cursor: pointer;
+align-self: center;
+margin-bottom: 4px;
+}
+</style>
+
+</head>
+<body>
+<div class="phone">
+
+  <!-- Safari browser bar -->
+
+  <div class="safari-bar">
+    <span class="safari-done"></span>
+    <div class="safari-url">
+      <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+        <path d="M9.5 5.5V4A3.5 3.5 0 0 0 2.5 4v1.5" stroke="#6e6e73" stroke-width="1.3" stroke-linecap="round"/>
+        <rect x="1" y="5.5" width="10" height="8" rx="1.5" fill="#6e6e73"/>
+      </svg>
+      <span>my.ticketmaster.com</span>
+    </div>
+    <div class="safari-actions">
+      <span style="font-size:13px; font-weight:500; color:#1c1c1e;">AA</span>
+      <span>↺</span>
+    </div>
+  </div>
+
+  <!-- Blue nav -->
+
+  <div class="tm-nav">
+    <span class="tm-nav-back">&#8249;</span>
+    <span class="tm-nav-title">Event Details</span>
+  </div>
+
+  <!-- Breadcrumb -->
+
+  <div class="breadcrumb">
+    <a href="#">My Account</a>
+    <span class="sep">›</span>
+    <a href="#">My Events</a>
+    <span class="sep">›</span>
+    <span>Event Details</span>
+  </div>
+
+  <div class="content">
+
+
+<!-- Event Title -->
+<div class="event-title">An Evening with Silk Sonic</div>
+
+<!-- Event Info Row -->
+<div class="event-info-row">
+  <div class="event-thumb">
+    <div class="event-thumb-placeholder">
+      <!-- Silk Sonic silhouette placeholder -->
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="14" r="7" fill="rgba(255,255,255,0.4)"/>
+        <path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" fill="rgba(255,255,255,0.3)"/>
+      </svg>
+    </div>
+  </div>
+  <div class="event-meta">
+    <div class="event-datetime">Wed • Mar 23 • 9:00 PM</div>
+    <div class="event-venue">Dolby Live</div>
+    <div class="event-share">Share You're Going</div>
+    <div class="event-address">3770 S. Las Vegas Blvd, Las Vegas,<br>NV, 89109</div>
+  </div>
+</div>
+
+<!-- Get Tickets Ready -->
+<div class="tickets-ready-box">
+  <div class="tickets-ready-title">Get Your Tickets Ready</div>
+  <div class="tickets-ready-body">
+    <div class="wallet-icon">
+      <!-- Wallet/ticket icon -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2"/>
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="10" y1="14" x2="14" y2="14"/>
+      </svg>
+    </div>
+    <p class="tickets-ready-text">For the fastest way in, view and save your tickets to Apple Wallet to beat busy network connections.</p>
+  </div>
+  <a href="#" class="view-save-btn">View &amp; Save Tickets</a>
+</div>
+
+
+  </div>
+
+  <!-- Bottom action bar -->
+
+  <div class="bottom-bar">
+    <div class="bottom-action">
+      <div class="bottom-action-icon">
+        <!-- Transfer icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h3l-4-4-4 4h3v8"/>
+          <path d="M6 16H3l4 4 4-4H8V8"/>
+        </svg>
+      </div>
+      <span class="bottom-action-label">Transfer Tickets</span>
+    </div>
+
+```
+<div class="bottom-action">
+  <div class="bottom-action-icon">
+    <!-- Sell icon -->
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M9 9h4.5a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3H15"/>
+      <line x1="12" y1="7" x2="12" y2="9"/>
+      <line x1="12" y1="15" x2="12" y2="17"/>
+    </svg>
+  </div>
+  <span class="bottom-action-label">Sell</span>
+</div>
+
+<button class="contact-btn">Contact Us</button>
+
+  </div>
+
+</div>
+</body>
+</html>

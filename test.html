@@ -1,459 +1,251 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Ticket</title>
- <link rel="stylesheet" href="test.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css ">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
- 
- 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ticketmaster - Ticket Transfer</title>
+  <style type="text/css">
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    body { margin: 0 !important; padding: 0 !important; background-color: #f4f4f4; }
+    a { color: #026cdf; }
+  </style>
 </head>
+<body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, Helvetica, sans-serif;">
 
-<body>
- <div class="first">
-  <span class="cancel">
-   <a class="x" href="event.html">
-    <i class="fa-regular fa-xmark"></i>
-  </span>
-  </a>
-  My Tickets
- </div>
- 
- <div class="swiper">
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-   <!-- Slides -->
-   
-   
-   
-   <div class="swiper-slide">
-    <div class="null">
-     <div class="standard">
-      Standard Admission
-     </div>
-     <div class="griddiv">
-      <div class="grid">
-       SEC <br>
-       <span class="num">
-        240
-       </span>
-      </div>
-      <div class="grid">
-       ROW <br>
-       <span class="num">
-        3
-       </span>
-      </div>
-      <div class="grid">
-       SEAT <br>
-       <span class="num">
-        1
-       </span>
-      </div>
-     </div>
-     <div class="purdue">
-      <div class="down">
-       
-       <br />Indianapolis Colts vs Las Vegas Raiders   <br>
-       Sun • Oct 05, 2025 • 01:00PM
-      </div>
-     </div>
-     <div class="zonediv">
-      <div class="zone">
-       Lower Level
-      </div>
-      <div class="view">
-       <i class="barcode fa-solid fa-barcode"></i>
-       View Ticket
-      </div>
-      <a class="barlink" href="tckdetail.html">
-       <div class="tckdetails">
-        Ticket Details
-       </div>
-      </a>
-      <div class="tckmst">
-       tickermaster <span class="r">
-        <i class=" fa-sharp fa-regular fa-registered"></i>
-       </span>
-      </div>
-      
-     </div>
-     
-     <div class="dotdiv">
-      <div class="dot present"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-     </div>
-     
-     <div class="btndiv">
-      <button id="btn1" class="transfer">Transfer</button>
-      <button class="sell">Sell</button>
-     </div>
-    </div>
-   </div>
-   
-   
-   
-   
-   <div class="swiper-slide">
-    <div class="null">
-     <div class="standard">
-      Standard Admission
-     </div>
-     <div class="griddiv">
-      <div class="grid">
-       SEC <br>
-<span class="num">
-     240
-</span>
-</div>
-<div class="grid">
- ROW <br>
- <span class="num">
-  3
- </span>
-</div>
-<div class="grid">
- SEAT <br>
- <span class="num">
-  2
- </span>
-</div>
-</div>
-<div class="purdue">
- <div class="down">
-  
-  <br />Indianapolis Colts vs Las Vegas Raiders <br>
-  Sun • Oct 05, 2025 • 01:00PM
- </div>
-</div>
-<div class="zonediv">
- <div class="zone">
-  Lower Level
-      </div>
-      <div class="view">
-       <i class="barcode fa-solid fa-barcode"></i>
-       View Ticket
-      </div>
-      <a class="barlink" href="tckdetail.html">
-       <div class="tckdetails">
-        Ticket Details
-       </div>
-      </a>
-      <div class="tckmst">
-       tickermaster <span class="r">
-        <i class=" fa-sharp fa-regular fa-registered"></i>
-       </span>
-      </div>
-      
-     </div>
-     
-     <div class="dotdiv">
-      <div class="dot present"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-     </div>
-     
-     <div class="btndiv">
-      <button id="btn1" class="transfer">Transfer</button>
-      <button class="sell">Sell</button>
-     </div>
-    </div>
-   </div>
-   
-   
-   
-   
-   <div class="swiper-slide">
-    <div class="null">
-     <div class="standard">
-      Standard Admission
-     </div>
-     <div class="griddiv">
-      <div class="grid">
-       SEC <br>
-<span class="num">
-     240
-</span>
-</div>
-<div class="grid">
- ROW <br>
- <span class="num">
-  3
- </span>
-</div>
-<div class="grid">
- SEAT <br>
- <span class="num">
-  3
- </span>
-</div>
-</div>
-<div class="purdue">
- <div class="down">
-  
-  <br />Indianapolis Colts vs Las Vegas Raiders <br>
-  Sun • Oct 05, 2025 • 01:00PM
- </div>
-</div>
-<div class="zonediv">
- <div class="zone">
-  Lower Level
-      </div>
-      <div class="view">
-       <i class="barcode fa-solid fa-barcode"></i>
-       View Ticket
-      </div>
-      <a class="barlink" href="tckdetail.html">
-       <div class="tckdetails">
-        Ticket Details
-       </div>
-      </a>
-      <div class="tckmst">
-       tickermaster <span class="r">
-        <i class=" fa-sharp fa-regular fa-registered"></i>
-       </span>
-      </div>
-      
-     </div>
-     
-     <div class="dotdiv">
-      <div class="dot present"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-     </div>
-     
-     <div class="btndiv">
-      <button id="btn1" class="transfer">Transfer</button>
-      <button class="sell">Sell</button>
-     </div>
-    </div>
-   </div>
-   
-   
-   
-   
-   <div class="swiper-slide">
-    <div class="null">
-     <div class="standard">
-      Standard Admission
-     </div>
-     <div class="griddiv">
-      <div class="grid">
-       SEC <br>
-<span class="num">
-     240
-</span>
-</div>
-<div class="grid">
- ROW <br>
- <span class="num">
-  3
- </span>
-</div>
-<div class="grid">
- SEAT <br>
- <span class="num">
-  4
- </span>
-</div>
-</div>
-<div class="purdue">
- <div class="down">
-  
-  <br />Indianapolis Colts vs Las Vegas Raiders <br>
-  Sun • Oct 05, 2025 • 01:00PM
- </div>
-</div>
-<div class="zoneiv">
- <div class="zone">
-  Lower Level
-      </div>
-      <div class="view">
-       <i class="barcode fa-solid fa-barcode"></i>
-       View Ticket
-      </div>
-      <a class="barlink" href="tckdetail.html">
-       <div class="tckdetails">
-        Ticket Details
-       </div>
-      </a>
-      <div class="tckmst">
-       tickermaster <span class="r">
-        <i class=" fa-sharp fa-regular fa-registered"></i>
-       </span>
-      </div>
-      
-     </div>
-     
-     <div class="dotdiv">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot present"></div>
-     </div>
-     
-     <div class="btndiv">
-      <button id="btn4" class="transfer">Transfer</button>
-      <button class="sell">Sell</button>
-     </div>
-    </div>
-   </div>
-   
-   
-   
-  </div>
-  <!-- If we need pagination 
-  <div class="swiper-pagination"></div> -->
-  
-  <!-- If we need navigation buttons 
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div> -->
-  
-  <!-- If we need scrollbar -->
-  <div class="swiper-scrollbar"></div>
- </div>
- 
- <div id="drop" class="drop"></div>
- 
- <div id="select" class="selectdiv">
-  
-  <div class="trans">
-   SELECT TICKETS TO TRANSFER
-  </div>
-  
-  <div id="second" class="second">
-   <span class="sec">
-    SEC 240, Row 3
-   </span>
-   <span class="sel">
-    <i class="fa-sharp fa-solid fa-ticket"></i>
-    Tickets Selected
-   </span>
-   
-   <div class="seatgrid">
-    <div>
-     
-     <div class="blue">SEAT 1</div>
-     <div class="white">
-      <input type="checkbox">
-     </div>
-     
-    </div>
-    <div>
-     <div class="blue">SEAT 2</div>
-     <div class="white">
-      <input type="checkbox">
-     </div>
-    </div>
+<!-- Outer wrapper -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f4f4f4;">
+  <tr>
+    <td align="center" style="padding:20px 10px;">
+
+      <!-- Email container -->
+      <table border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:4px; overflow:hidden;">
+
+        <!-- ===== HEADER ===== -->
+        <tr>
+          <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; padding:16px 20px;">
+            <span style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; font-style:italic; color:#ffffff; letter-spacing:-0.5px;">
+              ticketmaster<sup style="font-style:normal; font-size:11px;">&#174;</sup>
+            </span>
+          </td>
+        </tr>
+
+        <!-- ===== TITLE ===== -->
+        <tr>
+          <td align="center" style="padding:28px 30px 0px; background-color:#ffffff;">
+            <h1 style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:800; color:#111111; line-height:1.3; text-align:center;">
+              Your Ticket Transfer From Hardin Is<br/>Ready To Be Accepted!
+            </h1>
+          </td>
+        </tr>
+
+        <!-- ===== PROGRESS STEPS (Table-based - email safe) ===== -->
+      <!-- ===== PROGRESS STEPS (Improved line positioning) ===== -->
+<tr>
+ <td align="center" style="padding:20px 30px 24px; background-color:#ffffff;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:540px;" role="presentation">
+   <tr>
+    <!-- Step 1: Received (Active) -->
+    <td align="center" width="33%" style="vertical-align:top;">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+      <tr>
+       <td align="center">
+        <div style="width:42px; height:42px; background-color:#026cdf; border-radius:50%; margin:0 auto; position:relative;">
+         <span style="color:#ffffff; font-size:22px; line-height:42px; position:absolute; top:0; left:0; width:100%; text-align:center;">🎟️</span>
+        </div>
+       </td>
+      </tr>
+      <tr>
+       <td align="center" style="padding-top:10px;">
+        <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px !important; font-weight:700; color:#026cdf; line-height:1.2;">Received</span>
+       </td>
+      </tr>
+     </table>
+    </td>
     
+    <!-- Connecting Line 1 - Now better centered and closer to circles -->
+    <td width="17%" style="vertical-align:middle;">
+     <div style="height:3px; background-color:#aaaaaa; margin-top:19px; margin-left:2px; margin-right:2px;"></div>
+    </td>
     
-    <div>
-     <div class="blue">SEAT 3</div>
-     <div class="white">
-      <input type="checkbox">
-     </div>
-    </div>
+    <!-- Step 2: Accepted (Inactive) -->
+    <td align="center" width="33%" style="vertical-align:top;">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+      <tr>
+       <td align="center">
+        <div style="width:42px; height:42px; border:2px dashed #bbbbbb; border-radius:50%; margin:0 auto; background-color:#ffffff; position:relative;">
+         <span style="color:#aaaaaa; font-size:24px; line-height:38px; position:absolute; top:0; left:0; width:100%; text-align:center;">✔</span>
+        </div>
+       </td>
+      </tr>
+      <tr>
+       <td align="center" style="padding-top:10px;">
+        <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px !important; font-weight:700; color:#999999; line-height:1.2;">Accepted</span>
+       </td>
+      </tr>
+     </table>
+    </td>
     
-    <div>
-     <div class="blue">SEAT 4</div>
-     <div class="white">
-      <input class="check" type="checkbox">
-     </div>
-    </div>
+    <!-- Connecting Line 2 - Better centered and closer -->
+    <td width="17%" style="vertical-align:middle;">
+     <div style="height:3px; background-color:#aaaaaa; margin-top:19px; margin-left:2px; margin-right:2px;"></div>
+    </td>
     
-    
-    
-   </div>
-  </div>
-  
-  <div class="gray">
-   <div id="trans" class="transferto">
-    TRANSFER TO >
-   </div>
-  </div>
-  
- </div>
- 
- <div id="trandiv" class="trandiv">
-  <div class="trans">
-   TRANSFER TO
-  </div>
-  
-  <br>
-  
-  <a class="anc" href="">
-   Select From Contact
-   <i class="fa-solid fa-user"></i>
-  </a>
-  
-  <br>
-  
-  <a class="anc" href="details.html">
-   Manually Enter a Recipient
-   <i class="fa-solid fa-circle-plus"></i>
-  </a>
-  
-  <div class="telegramdiv">
-   <div class="space">
-    <i class="tg fa-solid fa-paper-plane">
-    </i>
-   </div>
-  </div>
-  
-  <div class="transdiv">
-   Transfer Tickets Via Email or Text Message
-  </div>
-  
-  <div class="seldiv">
-   Select an email or mobile number to transfer ticket to your recipient
-  </div>
- </div>
- 
- 
- 
- 
- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
- <script type="module">
-  import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
-  
-  const swiper = new Swiper(...)
- </script>
- 
- <script>
-  const swiper = new Swiper('.swiper', {
-   // Optional parameters
-   direction: 'horizontal',
-   loop: true,
-   
-   // If we need pagination
-   pagination: {
-    el: '.swiper-pagination',
-   },
-   
-   // Navigation arrows
-   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-   },
-   
-   // And if we need scrollbar
-   scrollbar: {
-    el: '.swiper-scrollbar',
-   },
-  });
- </script>
- 
- <script src="ticket.js"></script>
- 
+    <!-- Step 3: Complete (Inactive) -->
+    <td align="center" width="33%" style="vertical-align:top;">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+      <tr>
+       <td align="center">
+        <div style="width:42px; height:42px; border:2px dashed #bbbbbb; border-radius:50%; margin:0 auto; background-color:#ffffff; position:relative;">
+         <span style="color:#aaaaaa; font-size:22px; line-height:42px; position:absolute; top:0; left:0; width:100%; text-align:center;">🎟️</span>
+        </div>
+       </td>
+      </tr>
+      <tr>
+       <td align="center" style="padding-top:10px;">
+        <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px !important; font-weight:700; color:#999999; line-height:1.2;">Complete</span>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </td>
+</tr>
+
+        <!-- ===== EVENT CARD ===== -->
+        <tr>
+          <td style="padding:0 20px 20px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:0.7px solid #e0e0e0; border-radius:3px; overflow:hidden;">
+
+              <!-- Event Info -->
+              <tr>
+                <td style="padding:16px; border-bottom:1px solid #eeeeee; background-color:#fafafa;">
+                  <p style="margin:0 0 6px; font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:700; color:#111111;">Deftones - North American Tour 2025</p>
+                  <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#555555; line-height:1.6;">
+                    Wed, Mar 12 @ 7:00 PM<br/>
+                    Moody Center ATX, Austin, TX
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Seat Info -->
+              <tr>
+                <td style="padding:12px 16px; background-color:#fafafa; border-bottom:1px solid #eeeeee;">
+                  <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#111111;">
+                    Section 205, Row H, Seat 10 <br> 
+                    Section 205, Row H, Seat 11
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Image -->
+              <tr>
+                <td align="center" bgcolor="#16213e" style="background-color:#16213e; padding:0;">
+                  <img src="https://i.imgur.com/VocK4yI.jpeg" alt="OKC Logo" style="width:100%; max-width:600px; height:auto; display:block; margin:0 auto;">
+                </td>
+              </tr>
+
+              <!-- Accept Button -->
+              <tr>
+                <td style="padding:40px 16px 16px; background-color:#ffffff;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; border-radius:4px;">
+                        <a href="#" style="display:block; padding:14px 20px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:#ffffff; text-decoration:none;">
+                          ACCEPT TICKETS
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+            </table>
+          </td>
+        </tr>
+
+        <!-- ===== FINE PRINT ===== -->
+        <tr>
+          <td style="padding:16px 20px; border-top:1px solid #eeeeee; border-bottom:1px solid #eeeeee;">
+            <p style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
+              By clicking "ACCEPT TICKETS", you agree to our <a href="https://legal.ticketmaster.com/terms-of-use" style="color:#026cdf; text-decoration:none;">Terms of Use</a> and any applicable ticket back terms.
+            </p>
+            <p style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
+              If the tickets were obtained fraudulently by the person transferring them, they may be cancelled at any time, removed from your account and no longer available for use.
+            </p>
+            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
+              This email is <strong>NOT</strong> your ticket.
+            </p>
+          </td>
+        </tr>
+
+        <!-- ===== TRANSFER STATUS ===== -->
+        <tr>
+          <td style="padding:16px 20px 28px;">
+            <p style="margin:0 0 6px; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#111111;">Transfer Status: Received</p>
+            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; line-height:1.6;">
+              You got 1 ticket! You're one step closer to seeing the show. <a href="#" style="color:#026cdf; text-decoration:none;">View transfer details</a> to confirm your seat or learn more about the process.
+            </p>
+          </td>
+        </tr>
+
+        <!-- ===== MESSAGE FROM SENDER ===== -->
+        <tr>
+          <td style="padding:0 20px 20px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fdf0f5; border:1px solid #f0d0e0; border-radius:6px;">
+              <tr>
+                <td style="padding:16px 18px;">
+                  <p style="margin:0 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#c0406e;">A Message from John...</p>
+                  <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#c0406e; line-height:1.5; font-style:italic;">Enjoy your event</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- ===== WHAT'S NEXT ===== -->
+        <tr>
+          <td style="padding:0 20px 20px;">
+            <p style="margin:0 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:700; color:#111111;">What's Next?</p>
+            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#444444; line-height:1.7;">
+              You'll need to first accept the ticket transfer so the order is moved to your Ticketmaster account. Once the transfer is complete, we'll let the sender know you're all set. To accept the tickets, have your Ticketmaster password handy and login to your Ticketmaster account, or create a <a href="https://www.ticketmaster.com/member" style="color:#026cdf; text-decoration:none;">new one</a>. Visit <a href="#" style="color:#026cdf; text-decoration:none;">Event Details</a> to view your ticket(s).
+            </p>
+          </td>
+        </tr>
+
+        <!-- ===== HELP TEXT ===== -->
+        <tr>
+          <td align="center" style="padding:10px 20px 28px;">
+            <p style="margin:0 0 4px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; text-align:center;">We're here to help.</p>
+            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; text-align:center; line-height:1.6;">
+              If you have any questions, please <a href="https://help.ticketmaster.com/s/article/How-do-I-contact-Customer-Service" style="color:#026cdf; text-decoration:none;">contact</a><br />Ticketmaster Fan Support.
+            </p>
+          </td>
+        </tr>
+
+        <!-- ===== BLUE FOOTER ===== -->
+        <tr>
+          <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; padding:28px 20px;">
+            <p style="margin:0 0 12px; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#ffffff; text-align:center;">
+              <a href="#" style="color:#ffffff; text-decoration:underline;">Ticketmaster Att: Fan Support</a>
+            </p>
+            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#cce0ff; text-align:center;">
+              &copy; 2026 Ticketmaster. All rights reserved.
+            </p>
+          </td>
+        </tr>
+
+      </table>
+      <!-- /Email container -->
+
+    </td>
+  </tr>
+</table>
+
+
+
 </body>
-
-
-
 </html>

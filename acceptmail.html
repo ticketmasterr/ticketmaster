@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ticketmaster - Ticket Transfer</title>
+  <style type="text/css">
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    body { margin: 0 !important; padding: 0 !important; background-color: #f4f4f4; }
+    a { color: #026cdf; }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, Helvetica, sans-serif;">
+
+<!-- Outer wrapper -->
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f4f4f4;">
+  <tr>
+    <td align="center" style="padding:20px 10px;">
+
+
+  <!-- Email container -->
+  <table border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:4px; overflow:hidden;">
+
+    <!-- ===== HEADER ===== -->
+    <tr>
+      <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; padding:16px 20px;">
+        <span style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; font-style:italic; color:#ffffff; letter-spacing:-0.5px;">
+          ticketmaster<sup style="font-style:normal; font-size:11px;">&#174;</sup>
+        </span>
+      </td>
+    </tr>
+
+    <!-- ===== TITLE ===== -->
+    <tr>
+      <td align="center" style="padding:28px 30px 0px; background-color:#ffffff;">
+        <h1 style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:800; color:#111111; line-height:1.3; text-align:center;">
+          Your Ticket Transfer From Hardin Is<br/>Ready To Be Accepted!
+        </h1>
+      </td>
+    </tr>
+
+    <!-- ===== PROGRESS STEPS (single SVG for pixel-perfect line touching circles) ===== -->
+    <tr>
+      <td align="center" style="padding:20px 30px 24px; background-color:#ffffff;">
+        <!--
+          SVG canvas: 540px wide, 70px tall
+          Circle centers: x=36 (Received), x=270 (Accepted), x=504 (Complete)
+          Circle radius: 18 (outer dashed for inactive), 18 (solid blue for active)
+          Lines run from edge of circle to edge of next circle:
+            Line 1: x1=54 to x2=252  (36+18 → 270-18)
+            Line 2: x1=288 to x2=486 (270+18 → 504-18)
+          All at y=18 (vertical center of circles)
+        -->
+        <svg width="540" height="70" viewBox="0 0 540 70" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; max-width:100%;">
+
+          <!-- LINE 1: Received edge → Accepted edge -->
+          <line x1="54" y1="18" x2="250" y2="17" stroke="#aaaaaa" stroke-width="1.5"/>
+
+          <!-- LINE 2: Accepted edge → Complete edge -->
+          <line x1="290" y1="18" x2="484" y2="18" stroke="#aaaaaa" stroke-width="1.5"/>
+
+          <!-- ── STEP 1: RECEIVED (solid blue filled circle) ── -->
+          <circle cx="36" cy="18" r="21" fill="#026cdf"/>
+          <!-- Ticket icon (white) centered at 36,18 -->
+          <path d="M25 13C25 12.4 25.4 12 26 12H46C46.6 12 47 12.4 47 13V14.8C46.4 15 46 15.6 46 16.2C46 16.8 46.4 17.4 47 17.6V19.5C47 20.1 46.6 20.5 46 20.5H26C25.4 20.5 25 20.1 25 19.5V17.6C25.6 17.4 26 16.8 26 16.2C26 15.6 25.6 15 25 14.8V13Z" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="36" y1="12" x2="36" y2="20.5" stroke="white" stroke-width="1.2" stroke-dasharray="1.8,1.8"/>
+          <polyline points="33,17.5 36,20 39,17.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+          <!-- LABEL: Received -->
+          <text x="36" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#026cdf">Received</text>
+
+          <!-- ── STEP 2: ACCEPTED (outer dashed + inner solid circle) ── -->
+          <!-- Outer dashed circle -->
+          <circle cx="270" cy="18" r="21" stroke="#bbbbbb" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+          <!-- Inner solid circle -->
+          <circle cx="270" cy="18" r="11" stroke="#bbbbbb" stroke-width="1.5" fill="white"/>
+          <!-- Checkmark -->
+          <polyline points="264,18 268,22 276,14" stroke="#aaaaaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+          <!-- LABEL: Accepted -->
+          <text x="270" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#999999">Accepted</text>
+
+          <!-- ── STEP 3: COMPLETE (outer dashed + inner solid circle) ── -->
+          <!-- Outer dashed circle -->
+          <circle cx="504" cy="18" r="21" stroke="#bbbbbb" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+          <!-- Inner solid circle -->
+          <circle cx="504" cy="18" r="11" stroke="#bbbbbb" stroke-width="1.5" fill="white"/>
+          <!-- Ticket icon (gray) -->
+          <path d="M496 15C496 14.4 496.4 14 497 14H511C511.6 14 512 14.4 512 15V16.2C511.5 16.4 511.2 16.8 511.2 17.3C511.2 17.8 511.5 18.2 512 18.4V19.6C512 20.2 511.6 20.6 511 20.6H497C496.4 20.6 496 20.2 496 19.6V18.4C496.5 18.2 496.8 17.8 496.8 17.3C496.8 16.8 496.5 16.4 496 16.2V15Z" stroke="#aaaaaa" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="504" y1="14" x2="504" y2="20.6" stroke="#aaaaaa" stroke-width="1" stroke-dasharray="1.5,1.5"/>
+
+          <!-- LABEL: Complete -->
+          <text x="504" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#999999">Complete</text>
+
+        </svg>
+      </td>
+    </tr>
+
+    <!-- ===== EVENT CARD ===== -->
+    <tr>
+      <td style="padding:0 20px 20px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:0.7px solid #e0e0e0; border-radius:3px; overflow:hidden;">
+
+          <!-- Event Info -->
+          <tr>
+            <td style="padding:16px; border-bottom:1px solid #eeeeee;background-color:#fafafa;">
+              <p style="margin:0 0 6px; font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:700; color:#111111;">Deftones - North American Tour 2025</p>
+              <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#555555; line-height:1.6;">
+                Wed, Mar 12 @ 7:00 PM<br/>
+                Moody Center ATX, Austin, TX
+              </p>
+            </td>
+          </tr>
+
+          <!-- Seat Info -->
+          <tr>
+            <td style="padding:12px 16px; background-color:#fafafa; border-bottom:1px solid #eeeeee;">
+              <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#111111;">Section 205, Row H, Seat 10 <br> Section 205, Row H, seat 11
+           
+              </p>
+            </td>
+          </tr>
+
+          <!-- Band Image placeholder -->
+          <tr>
+           
+            <td align="center" bgcolor="#16213e" height="180" style="background-color:#16213e; height:0px; padding:0px 0 0px;">
+              <!-- Image -->
+              <img src="https://i.imgur.com/VocK4yI.jpeg" alt="Dallas Stars Logo" style="width:100%; height:10em; display:block; margin:0 auto; background-color:#1a1a1a;">
+            
+            </td>
+          </tr>
+          
+          
+
+          <!-- Accept Button -->
+          <tr>
+            <td style="padding:40px 16px 16px; background-color:#ffffff;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; border-radius: 1px;">
+                    <a href="#" style="display:block; padding:8px 13px; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700; letter-spacing: px; text-transform:uppercase; color:#ffffff; text-decoration:none;">
+                      ACCEPT TICKETS
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+
+    <!-- ===== FINE PRINT ===== -->
+    <tr>
+      <td style="padding:16px 20px; border-top:1px solid #eeeeee; border-bottom:1px solid #eeeeee;">
+        <p style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
+          By clicking "ACCEPT TICKETS", you agree to our <a href="https://legal.ticketmaster.com/terms-of-use" style="color:#026cdf; text-decoration:none;">Terms of Use</a> and any applicable ticket back terms.
+        </p>
+        <p style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
+          If the tickets were obtained fraudulently by the person transferring them, they may be cancelled at any time, removed from your account and no longer available for use.
+        </p>
+        <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
+          This email is <strong>NOT</strong> your ticket.
+        </p>
+      </td>
+    </tr>
+
+    <!-- ===== TRANSFER STATUS ===== -->
+    <tr>
+      <td style="padding:16px 20px 28px;">
+        <p style="margin:0 0 6px; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#111111;">Transfer Status: Received</p>
+        <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; line-height:1.6;">
+          You got 1 ticket! You're one step closer to seeing the show. <a href="#" style="color:#026cdf; text-decoration:none;">View transfer details</a> to confirm your seat or learn more about the process.
+        </p>
+      </td>
+    </tr>
+    
+        <!-- ===== MESSAGE FROM SENDER ===== -->
+    <tr>
+     <td style="padding:0 20px 20px;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fdf0f5; border:1px solid #f0d0e0; border-radius:6px;">
+       <tr>
+        <td style="padding:16px 18px;">
+         <p style="margin:0 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#c0406e;">A Message from John...</p>
+         <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#c0406e; line-height:1.5; font-style:italic;">Enjoy your event</p>
+        </td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+    
+    <!-- ===== WHAT'S NEXT ===== -->
+    <tr>
+     <td style="padding:0 20px 20px;">
+      <p style="margin:0 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:700; color:#111111;">What's Next?</p>
+      <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#444444; line-height:1.7;">
+       You'll need to first accept the ticket transfer so the order is moved to your Ticketmaster account. Once the transfer is complete, we'll let the sender know you're all set. To accept the tickets, have your Ticketmaster password handy and login to your Ticketmaster account, or create a <a href="https://www.ticketmaster.com/member" style="color:#026cdf; text-decoration:none;">new one</a>. Visit <a href="#" style="color:#026cdf; text-decoration:none;">Event Details</a> to view your ticket(s).
+      </p>
+     </td>
+    </tr>
+    
+    <!-- ===== HELP TEXT ===== -->
+    <tr>
+     <td align="center" style="padding:10px 20px 28px;">
+      <p style="margin:0 0 4px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; text-align:center;">We're here to help.</p>
+      <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; text-align:center; line-height:1.6;">
+       If you have any questions, please <a href="https://help.ticketmaster.com/s/article/How-do-I-contact-Customer-Service" style="color:#026cdf; text-decoration:none;">contact</a><br />Ticketmaster Fan Support.
+      </p>
+     </td>
+    </tr>
+    
+    <!-- ===== BLUE FOOTER ===== -->
+    <tr>
+     <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; padding:28px 20px;">
+      <p style="margin:0 0 12px; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#ffffff; text-align:center;">
+       <a href="#" style="color:#ffffff; text-decoration:underline;">Ticketmaster Att:  Fan Support</a>
+      </p>
+      <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#cce0ff; text-align:center;">
+       &copy; 2026 Ticketmaster. All rights reserved.
+      </p>
+     </td>
+    </tr>
+
+  </table>
+  <!-- /Email container -->
+
+</td>
+
+
+  </tr>
+</table>
+
+</body>
+</html>
