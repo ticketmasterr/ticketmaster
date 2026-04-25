@@ -1,366 +1,295 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ticket - Ticketmaster</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-font-family: -apple-system, BlinkMacSystemFont, ‘Helvetica Neue’, sans-serif;
-background: #026cdf;
-display: flex;
-justify-content: center;
-min-height: 100vh;
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Ticket UI</title>
+ 
+ <style>
+  body {
+   margin: 0;
+   background: #f4f4f4;
+   font-family: Arial, sans-serif;
+  }
+  
+  /* Header */
+  .header {
+   background: #2d5bd1;
+   color: #fff;
+   padding: 15px;
+   display: flex;
+   align-items: center;
+  }
+  
+  .back {
+   font-size: 20px;
+   margin-right: 10px;
+   cursor: pointer;
+  }
+  
+  .title {
+   font-weight: bold;
+   font-size: 16px;
+  }
+  
+  .subtitle {
+   font-size: 12px;
+   opacity: 0.9;
+  }
+  
+  /* Container */
+  .container {
+   max-width: 340px;
+   margin: 20px auto;
+  }
+  
+  /* Wallet notice */
+  .notice {
+   border: 1px solid #caa6ff;
+   border-radius: 10px;
+   padding: 10px;
+   display: flex;
+   align-items: center;
+   font-size: 13px;
+   background: #fff;
+  }
+  
+  .notice img {
+   width: 20px;
+   margin-right: 8px;
+  }
+  
+  /* Ticket card */
+  .ticket {
+   margin-top: 15px;
+   border-radius: 12px;
+   overflow: hidden;
+   background: #fff;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ticket-header {
+   background: #2d5bd1;
+   color: #fff;
+   text-align: center;
+   padding: 10px;
+   font-weight: bold;
+  }
+  
+  .ticket-info {
+   background: #3c6ee6;
+   color: #fff;
+   text-align: center;
+   padding: 15px;
+  }
+  
+  .ticket-info .labels {
+   font-size: 12px;
+  }
+  
+  .ticket-info .values {
+   font-size: 22px;
+   font-weight: bold;
+   margin-top: 5px;
+  }
+  
+  .ticket-info table {
+   width: 100%;
+  }
+  
+  /* Barcode */
+  .barcode-container {
+   padding: 20px;
+   text-align: center;
+   position: relative;
+  }
+  
+  .barcode {
+ height: 90px;
+ background: #fff;
+ position: relative;
+ overflow: hidden;
+ display: flex;
+ align-items: center;
 }
 
-.screen {
-width: 100%;
-max-width: 390px;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-background: #026cdf;
-position: relative;
-overflow: hidden;
+.bars {
+ display: flex;
+ height: 100%;
+ width: 100%;
 }
 
-/* ── TOP LABEL ── */
-.top-label {
-text-align: center;
-padding: 14px 0 10px;
-color: rgba(255,255,255,0.85);
-font-size: 15px;
-font-weight: 400;
-letter-spacing: 0.2px;
+.bar {
+ height: 100%;
+ background: #000;
 }
-
-/* ── SEAT INFO GRID ── */
-.seat-grid {
-display: flex;
-justify-content: space-around;
-align-items: flex-start;
-padding: 6px 20px 18px;
-}
-.seat-col {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 2px;
-flex: 1;
-}
-.seat-col-label {
-font-size: 13px;
-font-weight: 600;
-color: rgba(255,255,255,0.75);
-letter-spacing: 1.5px;
-text-transform: uppercase;
-}
-.seat-col-value {
-font-size: 46px;
-font-weight: 800;
-color: #ffffff;
-line-height: 1;
-letter-spacing: -1px;
-}
-.seat-divider {
-width: 1px;
-height: 60px;
-background: rgba(255,255,255,0.25);
-align-self: center;
-}
-
-/* ── TICKET CARD ── */
-.ticket-card {
-margin: 0 12px;
-background: #fff;
-border-radius: 18px 18px 0 0;
-overflow: hidden;
-flex: 1;
-display: flex;
-flex-direction: column;
-}
-
-/* Event image area */
-.event-image-area {
-position: relative;
-background: linear-gradient(180deg, #7a5c2a 0%, #3d2e14 60%, #1a1208 100%);
-height: 220px;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: flex-end;
-padding-bottom: 0;
-overflow: hidden;
-}
-.artist-circle {
-width: 150px;
-height: 150px;
-border-radius: 50%;
-overflow: hidden;
-border: 3px solid rgba(255,255,255,0.15);
-margin-bottom: 16px;
-background: linear-gradient(135deg, #b8860b 0%, #6b4c1a 50%, #3d2b0a 100%);
-display: flex;
-align-items: center;
-justify-content: center;
-position: absolute;
-top: 20px;
-left: 50%;
-transform: translateX(-50%);
-}
-.artist-circle img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
-/* Placeholder silhouettes inside circle */
-.artist-silhouette {
-display: flex;
-gap: 8px;
-align-items: flex-end;
-padding-bottom: 6px;
-}
-.sil {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 3px;
-}
-.sil-head {
-border-radius: 50%;
-background: rgba(255,255,255,0.25);
-}
-.sil-body {
-border-radius: 3px 3px 0 0;
-background: rgba(255,255,255,0.2);
-}
-
-.event-text-overlay {
-position: absolute;
-bottom: 16px;
-left: 0; right: 0;
-text-align: center;
-}
-.event-name {
-font-size: 20px;
-font-weight: 700;
-color: #ffffff;
-text-shadow: 0 1px 6px rgba(0,0,0,0.5);
-margin-bottom: 4px;
-}
-.event-date {
-font-size: 13px;
-color: rgba(255,255,255,0.85);
-font-weight: 400;
-text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-}
-
-/* ── WHITE CARD BOTTOM ── */
-.card-bottom {
-background: #ffffff;
-padding: 22px 24px 20px;
-display: flex;
-flex-direction: column;
-gap: 16px;
-flex: 1;
-}
-
-/* No phone/camera notice */
-.notice {
-text-align: center;
-font-size: 13px;
-font-weight: 600;
-color: #333;
-letter-spacing: 0.5px;
-padding: 4px 0 2px;
-}
-
-/* Apple Wallet button */
-.wallet-btn {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 12px;
-background: #1c1c1e;
-border-radius: 12px;
-padding: 14px 20px;
-cursor: pointer;
-border: none;
-text-decoration: none;
-}
-.wallet-icon {
-width: 32px;
-height: 22px;
-border-radius: 4px;
-overflow: hidden;
-display: flex;
-flex-direction: column;
-flex-shrink: 0;
-}
-.wallet-stripe {
-flex: 1;
-}
-.wallet-btn-text {
-font-size: 17px;
-font-weight: 500;
-color: #ffffff;
-font-family: -apple-system, BlinkMacSystemFont, ‘Helvetica Neue’, sans-serif;
-}
-
-/* Bottom links */
-.bottom-links {
-display: flex;
-justify-content: space-around;
-align-items: center;
-padding: 4px 0 8px;
-}
-.bottom-link {
-font-size: 15px;
-font-weight: 500;
-color: #026cdf;
-text-decoration: none;
-cursor: pointer;
-}
-
-/* ── TM VERIFIED FOOTER ── */
-.tm-verified {
-background: #026cdf;
-padding: 10px 0 16px;
-text-align: center;
-}
-.tm-verified-inner {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 6px;
-}
-.tm-verified-logo {
-font-size: 11px;
-font-style: italic;
-font-weight: 700;
-color: rgba(255,255,255,0.9);
-letter-spacing: -0.3px;
-}
-.tm-verified-text {
-font-size: 11px;
-color: rgba(255,255,255,0.9);
-font-weight: 400;
-letter-spacing: 0.5px;
-}
-.verified-check {
-width: 14px;
-height: 14px;
-background: rgba(255,255,255,0.3);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-</style>
-
+  
+  /* Scanning line */
+  .scan-line {
+   position: absolute;
+   top: 0;
+   width: 6px;
+   height: 100%;
+   background: rgba(0, 123, 255, 0.7);
+   animation: scan 2s linear infinite;
+  }
+  
+  @keyframes scan {
+   from {
+    left: 0;
+   }
+   
+   to {
+    left: 100%;
+   }
+  }
+  
+  .barcode-text {
+   font-size: 12px;
+   color: #666;
+   margin-top: 10px;
+  }
+  
+  /* Apple Wallet Button */
+  .wallet-btn {
+   background: #000;
+   color: #fff;
+   padding: 10px;
+   border-radius: 8px;
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   margin-top: 10px;
+   cursor: pointer;
+  }
+  
+  .wallet-btn img {
+   width: 20px;
+  }
+  
+  /* Bottom buttons */
+  .actions {
+   display: flex;
+   gap: 10px;
+   margin-top: 15px;
+  }
+  
+  .btn {
+   flex: 1;
+   padding: 12px;
+   text-align: center;
+   border-radius: 8px;
+   color: #fff;
+   cursor: pointer;
+  }
+  
+  .transfer {
+   background: #2d5bd1;
+  }
+  
+  .sell {
+   background: #ccc;
+   color: #333;
+  }
+ </style>
+ 
 </head>
+
 <body>
-<div class="screen">
-
-  <!-- Top label -->
-
-  <div class="top-label">Standard</div>
-
-  <!-- Seat info grid -->
-
-  <div class="seat-grid">
-    <div class="seat-col">
-      <span class="seat-col-label">SEC</span>
-      <span class="seat-col-value">406</span>
-    </div>
-    <div class="seat-divider"></div>
-    <div class="seat-col">
-      <span class="seat-col-label">ROW</span>
-      <span class="seat-col-value">F</span>
-    </div>
-    <div class="seat-divider"></div>
-    <div class="seat-col">
-      <span class="seat-col-label">SEAT</span>
-      <span class="seat-col-value">9</span>
-    </div>
+ 
+ <!-- Header -->
+ <div class="header">
+  <div class="back">←</div>
+  <div>
+   <div class="title">Colter Wall with Special Guest Vincent Neil</div>
+   <div class="subtitle">Sat • Feb 18 • 8:00 PM • 713 Music Hall</div>
   </div>
-
-  <!-- Ticket card -->
-
-  <div class="ticket-card">
-
-<!-- Event image area with artist circle -->
-<div class="event-image-area">
-  <!-- Artist circle -->
-  <div class="artist-circle">
-    <!-- Silk Sonic duo silhouette placeholder -->
-    <div class="artist-silhouette">
-      <div class="sil">
-        <div class="sil-head" style="width:26px;height:26px;"></div>
-        <div class="sil-body" style="width:30px;height:52px;"></div>
-      </div>
-      <div class="sil">
-        <div class="sil-head" style="width:24px;height:24px;"></div>
-        <div class="sil-body" style="width:28px;height:46px;"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Event name + date overlay at bottom -->
-  <div class="event-text-overlay">
-    <div class="event-name">An Evening with Silk Sonic</div>
-    <div class="event-date">Wed, Mar 23, 9pm &bull; Dolby Live</div>
-  </div>
-</div>
-
-<!-- White bottom of card -->
-<div class="card-bottom">
-
+ </div>
+ 
+ <div class="container">
+  
   <!-- Notice -->
-  <div class="notice">NO PHONE/CAMERA</div>
-
-  <!-- Apple Wallet button -->
-  <a href="#" class="wallet-btn">
-    <!-- Apple Wallet icon (colored stripes) -->
-    <div class="wallet-icon">
-      <div class="wallet-stripe" style="background:#ff6b6b;"></div>
-      <div class="wallet-stripe" style="background:#ffa94d;"></div>
-      <div class="wallet-stripe" style="background:#ffd43b;"></div>
-      <div class="wallet-stripe" style="background:#69db7c;"></div>
-      <div class="wallet-stripe" style="background:#339af0;"></div>
-      <div class="wallet-stripe" style="background:#845ef7;"></div>
+  <div class="notice">
+   <img src="https://img.icons8.com/ios-filled/50/wallet.png">
+   <div>Add to Apple Wallet to beat busy network connections at the event.</div>
+  </div>
+  
+  <!-- Ticket -->
+  <div class="ticket">
+   
+   <div class="ticket-header">Standard Ticket</div>
+   
+   <div class="ticket-info">
+    <table>
+     <tr class="labels">
+      <td>SEC</td>
+      <td>ROW</td>
+      <td>SEAT</td>
+     </tr>
+     <tr class="values">
+      <td>106</td>
+      <td>DD</td>
+      <td>8</td>
+     </tr>
+    </table>
+    <div style="margin-top:10px; font-size:13px;">Floor 106 Right</div>
+   </div>
+   
+   <!-- Barcode -->
+   <div class="barcode-container">
+    <div class="barcode">
+     <div class="bars" id="barcodeBars"></div>
+     <div class="scan-line"></div>
     </div>
-    <span class="wallet-btn-text">Add to Apple Wallet</span>
-  </a>
-
-  <!-- Bottom links -->
-  <div class="bottom-links">
-    <a href="#" class="bottom-link">View Barcode</a>
-    <a href="#" class="bottom-link">Ticket Details</a>
-  </div>
-
-</div>
-
-
-  </div>
-
-  <!-- TM Verified footer -->
-
-  <div class="tm-verified">
-    <div class="tm-verified-inner">
-      <span class="tm-verified-logo">ticketmaster</span>
-      <div class="verified-check">
-        <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
-          <polyline points="2,5 4,7 8,3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <span class="tm-verified-text">verified</span>
+    <div class="barcode-text">Screenshots won't get you in.</div>
+    
+    <div class="wallet-btn">
+     <img src="https://img.icons8.com/ios-filled/50/apple-wallet.png">
+     Add to Apple Wallet
     </div>
+   </div>
+   
   </div>
-
-</div>
+  
+  <!-- Actions -->
+  <div class="actions">
+   <div class="btn transfer">Transfer</div>
+   <div class="btn sell">Sell</div>
+  </div>
+  
+ </div>
+ 
+ <script>
+ const container = document.getElementById("barcodeBars");
+ 
+ function generateBarcode() {
+  container.innerHTML = "";
+  
+  let totalWidth = 0;
+  
+  while (totalWidth < 100) {
+   let width = Math.floor(Math.random() * 4) + 1; // 1px–4px random
+   let gap = Math.floor(Math.random() * 3) + 1; // space between bars
+   
+   // black bar
+   let bar = document.createElement("div");
+   bar.className = "bar";
+   bar.style.width = width + "px";
+   container.appendChild(bar);
+   
+   // white gap
+   let space = document.createElement("div");
+   space.style.width = gap + "px";
+   container.appendChild(space);
+   
+   totalWidth += width + gap;
+  }
+ }
+ 
+ generateBarcode();
+</script>
+ 
 </body>
+
 </html>

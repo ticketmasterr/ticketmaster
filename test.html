@@ -1,251 +1,752 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ticketmaster - Ticket Transfer</title>
-  <style type="text/css">
-    /* Reset */
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
-    body { margin: 0 !important; padding: 0 !important; background-color: #f4f4f4; }
-    a { color: #026cdf; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Colter Wall Tickets</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, ‘SF Pro Display’, ‘Helvetica Neue’, sans-serif;
+background: #f2f2f7;
+min-height: 100vh;
+max-width: 430px;
+margin: 0 auto;
+user-select: none;
+}
+
+/* TOP HEADER */
+.header {
+background: linear-gradient(135deg, #1a3a8f 0%, #2c5ecf 60%, #1a4fd6 100%);
+padding: 14px 16px 16px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.header-back {
+color: white;
+font-size: 22px;
+font-weight: 300;
+line-height: 1;
+opacity: 0.9;
+cursor: pointer;
+flex-shrink: 0;
+}
+.header-info h1 {
+color: white;
+font-size: 17px;
+font-weight: 700;
+line-height: 1.2;
+letter-spacing: -0.3px;
+}
+.header-info p {
+color: rgba(255,255,255,0.85);
+font-size: 13px;
+margin-top: 2px;
+font-weight: 400;
+}
+
+/* WALLET BANNER */
+.wallet-banner {
+margin: 14px 16px;
+background: #fff;
+border: 1.5px solid #d4aaff;
+border-radius: 14px;
+padding: 13px 14px;
+display: flex;
+align-items: center;
+gap: 12px;
+position: relative;
+}
+.wallet-icon {
+width: 42px;
+height: 42px;
+border: 1.5px solid #d4aaff;
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+position: relative;
+}
+.wallet-icon svg { width: 22px; height: 22px; color: #7b2fff; }
+.wallet-icon .plus {
+position: absolute;
+bottom: -3px; right: -3px;
+width: 14px; height: 14px;
+background: #7b2fff;
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+color: white; font-size: 10px; font-weight: 700;
+}
+.wallet-banner p { font-size: 14px; font-weight: 500; color: #1c1c1e; line-height: 1.35; }
+.wallet-close {
+margin-left: auto;
+font-size: 18px;
+color: #8e8e93;
+cursor: pointer;
+flex-shrink: 0;
+padding: 4px;
+}
+
+/* SWIPE AREA */
+.swipe-wrapper {
+padding: 0 16px;
+overflow: hidden;
+position: relative;
+}
+
+.swipe-track {
+display: flex;
+transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+gap: 0;
+}
+
+/* TICKET CARD */
+.ticket-card {
+min-width: 100%;
+background: white;
+border-radius: 18px;
+overflow: hidden;
+box-shadow: 0 2px 20px rgba(0,0,0,0.10);
+}
+
+.ticket-top {
+background: linear-gradient(135deg, #1a3a8f 0%, #2c5ecf 100%);
+padding: 14px 18px 0;
+}
+.ticket-label {
+display: flex;
+align-items: center;
+justify-content: space-between;
+color: white;
+font-size: 15px;
+font-weight: 500;
+margin-bottom: 14px;
+}
+.ticket-label .info-icon {
+width: 22px; height: 22px;
+border: 1.5px solid rgba(255,255,255,0.6);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 12px; color: rgba(255,255,255,0.85);
+font-style: italic; font-family: Georgia, serif; font-weight: 700;
+}
+
+.seat-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+border-top: 1px solid rgba(255,255,255,0.2);
+}
+.seat-cell {
+text-align: center;
+padding: 12px 10px 14px;
+border-right: 1px solid rgba(255,255,255,0.2);
+}
+.seat-cell:last-child { border-right: none; }
+.seat-cell .label {
+font-size: 11px;
+font-weight: 600;
+color: rgba(255,255,255,0.75);
+letter-spacing: 0.5px;
+text-transform: uppercase;
+margin-bottom: 4px;
+}
+.seat-cell .value {
+font-size: 32px;
+font-weight: 800;
+color: white;
+letter-spacing: -1px;
+line-height: 1;
+}
+
+.floor-bar {
+background: #3a6fe8;
+text-align: center;
+color: white;
+font-size: 14px;
+font-weight: 500;
+padding: 9px;
+margin-top: 0;
+}
+
+/* BARCODE AREA */
+.barcode-area {
+padding: 28px 20px 24px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 14px;
+}
+
+.barcode-container {
+width: 100%;
+position: relative;
+height: 110px;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+border-radius: 6px;
+}
+
+/* Animated barcode */
+.barcode-svg {
+width: 100%;
+height: 100%;
+}
+.scan-line {
+position: absolute;
+top: 0;
+left: 20%;
+width: 3px;
+height: 100%;
+background: linear-gradient(to bottom, transparent, #1a6eff, #1a6eff, transparent);
+opacity: 0.85;
+animation: scanMove 2s ease-in-out infinite;
+border-radius: 2px;
+}
+@keyframes scanMove {
+0% { left: 15%; opacity: 0; }
+10% { opacity: 0.85; }
+90% { opacity: 0.85; }
+100% { left: 78%; opacity: 0; }
+}
+
+.screenshot-warning {
+font-size: 14px;
+color: #3c3c43;
+font-weight: 400;
+}
+
+/* Apple Wallet button */
+.apple-wallet-btn {
+background: #1c1c1e;
+color: white;
+border: none;
+border-radius: 14px;
+padding: 13px 24px;
+display: flex;
+align-items: center;
+gap: 10px;
+cursor: pointer;
+font-family: -apple-system, BlinkMacSystemFont, ‘SF Pro Display’, sans-serif;
+margin-top: 4px;
+width: 90%;
+justify-content: center;
+transition: transform 0.12s, opacity 0.12s;
+}
+.apple-wallet-btn:active { transform: scale(0.97); opacity: 0.85; }
+.wallet-cards {
+display: flex;
+flex-direction: column;
+gap: 2px;
+width: 26px;
+flex-shrink: 0;
+}
+.wallet-cards span {
+height: 5px;
+border-radius: 2px;
+}
+.wallet-cards span:nth-child(1) { background: #ff6b35; width: 100%; }
+.wallet-cards span:nth-child(2) { background: #ffd60a; width: 85%; }
+.wallet-cards span:nth-child(3) { background: #30d158; width: 70%; }
+.wallet-cards span:nth-child(4) { background: #0a84ff; width: 55%; }
+.wallet-btn-text { text-align: left; }
+.wallet-btn-text span:first-child { display: block; font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 400; }
+.wallet-btn-text span:last-child { display: block; font-size: 17px; font-weight: 600; }
+
+/* PAGINATION */
+.pagination {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 16px;
+margin: 18px 0 16px;
+color: #3c3c43;
+font-size: 16px;
+}
+.pagination .arrow {
+font-size: 20px;
+color: #c7c7cc;
+cursor: pointer;
+padding: 4px 8px;
+transition: color 0.15s;
+font-weight: 300;
+}
+.pagination .arrow.active { color: #636366; }
+.pagination .page-text { font-size: 16px; color: #3c3c43; }
+
+/* BOTTOM BUTTONS */
+.bottom-actions {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0;
+}
+.bottom-btn {
+background: #1a3a8f;
+color: white;
+border: none;
+padding: 18px;
+font-size: 17px;
+font-weight: 500;
+cursor: pointer;
+font-family: inherit;
+transition: opacity 0.12s;
+}
+.bottom-btn:first-child { border-right: 1px solid rgba(255,255,255,0.2); }
+.bottom-btn:active { opacity: 0.8; }
+
+/* Touch/drag hint */
+.swipe-hint {
+position: absolute;
+bottom: -28px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 6px;
+align-items: center;
+}
+.swipe-hint-dot {
+width: 6px; height: 6px;
+border-radius: 50%;
+background: #c7c7cc;
+transition: background 0.2s, width 0.2s;
+}
+.swipe-hint-dot.active {
+background: #1a3a8f;
+width: 18px;
+border-radius: 3px;
+}
+</style>
+
 </head>
-<body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, Helvetica, sans-serif;">
+<body>
 
-<!-- Outer wrapper -->
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f4f4f4;">
-  <tr>
-    <td align="center" style="padding:20px 10px;">
+<!-- HEADER -->
 
-      <!-- Email container -->
-      <table border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:4px; overflow:hidden;">
+<div class="header">
+  <div class="header-back">&#8249;</div>
+  <div class="header-info">
+    <h1>Colter Wall with Special Guest Vincent Neil E…</h1>
+    <p>Sat • Feb 18 • 8:00 PM – 713 Music Hall</p>
+  </div>
+</div>
 
-        <!-- ===== HEADER ===== -->
-        <tr>
-          <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; padding:16px 20px;">
-            <span style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; font-style:italic; color:#ffffff; letter-spacing:-0.5px;">
-              ticketmaster<sup style="font-style:normal; font-size:11px;">&#174;</sup>
-            </span>
-          </td>
-        </tr>
+<!-- WALLET BANNER -->
 
-        <!-- ===== TITLE ===== -->
-        <tr>
-          <td align="center" style="padding:28px 30px 0px; background-color:#ffffff;">
-            <h1 style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:800; color:#111111; line-height:1.3; text-align:center;">
-              Your Ticket Transfer From Hardin Is<br/>Ready To Be Accepted!
-            </h1>
-          </td>
-        </tr>
+<div class="wallet-banner" id="walletBanner">
+  <div class="wallet-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:#7b2fff">
+      <rect x="2" y="5" width="20" height="14" rx="3"/>
+      <path d="M16 12h.01"/>
+    </svg>
+    <div class="plus">+</div>
+  </div>
+  <p>Add to Apple Wallet to beat busy network connections at the event.</p>
+  <div class="wallet-close" onclick="document.getElementById('walletBanner').style.display='none'">✕</div>
+</div>
 
-        <!-- ===== PROGRESS STEPS (Table-based - email safe) ===== -->
-      <!-- ===== PROGRESS STEPS (Improved line positioning) ===== -->
-<tr>
- <td align="center" style="padding:20px 30px 24px; background-color:#ffffff;">
-  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:540px;" role="presentation">
-   <tr>
-    <!-- Step 1: Received (Active) -->
-    <td align="center" width="33%" style="vertical-align:top;">
-     <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
-      <tr>
-       <td align="center">
-        <div style="width:42px; height:42px; background-color:#026cdf; border-radius:50%; margin:0 auto; position:relative;">
-         <span style="color:#ffffff; font-size:22px; line-height:42px; position:absolute; top:0; left:0; width:100%; text-align:center;">🎟️</span>
-        </div>
-       </td>
-      </tr>
-      <tr>
-       <td align="center" style="padding-top:10px;">
-        <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px !important; font-weight:700; color:#026cdf; line-height:1.2;">Received</span>
-       </td>
-      </tr>
-     </table>
-    </td>
-    
-    <!-- Connecting Line 1 - Now better centered and closer to circles -->
-    <td width="17%" style="vertical-align:middle;">
-     <div style="height:3px; background-color:#aaaaaa; margin-top:19px; margin-left:2px; margin-right:2px;"></div>
-    </td>
-    
-    <!-- Step 2: Accepted (Inactive) -->
-    <td align="center" width="33%" style="vertical-align:top;">
-     <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
-      <tr>
-       <td align="center">
-        <div style="width:42px; height:42px; border:2px dashed #bbbbbb; border-radius:50%; margin:0 auto; background-color:#ffffff; position:relative;">
-         <span style="color:#aaaaaa; font-size:24px; line-height:38px; position:absolute; top:0; left:0; width:100%; text-align:center;">✔</span>
-        </div>
-       </td>
-      </tr>
-      <tr>
-       <td align="center" style="padding-top:10px;">
-        <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px !important; font-weight:700; color:#999999; line-height:1.2;">Accepted</span>
-       </td>
-      </tr>
-     </table>
-    </td>
-    
-    <!-- Connecting Line 2 - Better centered and closer -->
-    <td width="17%" style="vertical-align:middle;">
-     <div style="height:3px; background-color:#aaaaaa; margin-top:19px; margin-left:2px; margin-right:2px;"></div>
-    </td>
-    
-    <!-- Step 3: Complete (Inactive) -->
-    <td align="center" width="33%" style="vertical-align:top;">
-     <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
-      <tr>
-       <td align="center">
-        <div style="width:42px; height:42px; border:2px dashed #bbbbbb; border-radius:50%; margin:0 auto; background-color:#ffffff; position:relative;">
-         <span style="color:#aaaaaa; font-size:22px; line-height:42px; position:absolute; top:0; left:0; width:100%; text-align:center;">🎟️</span>
-        </div>
-       </td>
-      </tr>
-      <tr>
-       <td align="center" style="padding-top:10px;">
-        <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px !important; font-weight:700; color:#999999; line-height:1.2;">Complete</span>
-       </td>
-      </tr>
-     </table>
-    </td>
-   </tr>
-  </table>
- </td>
-</tr>
+<!-- SWIPE AREA -->
 
-        <!-- ===== EVENT CARD ===== -->
-        <tr>
-          <td style="padding:0 20px 20px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:0.7px solid #e0e0e0; border-radius:3px; overflow:hidden;">
+<div class="swipe-wrapper" id="swipeWrapper">
+  <div class="swipe-track" id="swipeTrack">
 
-              <!-- Event Info -->
-              <tr>
-                <td style="padding:16px; border-bottom:1px solid #eeeeee; background-color:#fafafa;">
-                  <p style="margin:0 0 6px; font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:700; color:#111111;">Deftones - North American Tour 2025</p>
-                  <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#555555; line-height:1.6;">
-                    Wed, Mar 12 @ 7:00 PM<br/>
-                    Moody Center ATX, Austin, TX
-                  </p>
-                </td>
-              </tr>
+```
+<!-- TICKET 1 -->
+<div class="ticket-card">
+  <div class="ticket-top">
+    <div class="ticket-label">Standard Ticket <div class="info-icon">i</div></div>
+    <div class="seat-grid">
+      <div class="seat-cell"><div class="label">SEC</div><div class="value">106</div></div>
+      <div class="seat-cell"><div class="label">ROW</div><div class="value">DD</div></div>
+      <div class="seat-cell"><div class="label">SEAT</div><div class="value">8</div></div>
+    </div>
+  </div>
+  <div class="floor-bar">Floor 106 Right</div>
+  <div class="barcode-area">
+    <div class="barcode-container">
+      <svg class="barcode-svg" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="300" height="100" fill="white"/>
+        <!-- barcode bars -->
+        <rect x="8" y="5" width="4" height="90" fill="#000"/>
+        <rect x="14" y="5" width="2" height="90" fill="#000"/>
+        <rect x="20" y="5" width="6" height="90" fill="#000"/>
+        <rect x="29" y="5" width="3" height="90" fill="#000"/>
+        <rect x="35" y="5" width="5" height="90" fill="#000"/>
+        <rect x="43" y="5" width="2" height="90" fill="#000"/>
+        <rect x="48" y="5" width="4" height="90" fill="#000"/>
+        <rect x="55" y="5" width="7" height="90" fill="#000"/>
+        <rect x="65" y="5" width="3" height="90" fill="#000"/>
+        <rect x="71" y="5" width="2" height="90" fill="#000"/>
+        <rect x="76" y="5" width="5" height="90" fill="#000"/>
+        <rect x="84" y="5" width="4" height="90" fill="#000"/>
+        <rect x="91" y="5" width="2" height="90" fill="#000"/>
+        <rect x="96" y="5" width="6" height="90" fill="#000"/>
+        <rect x="105" y="5" width="3" height="90" fill="#000"/>
+        <rect x="111" y="5" width="4" height="90" fill="#000"/>
+        <rect x="118" y="5" width="2" height="90" fill="#000"/>
+        <rect x="123" y="5" width="5" height="90" fill="#000"/>
+        <rect x="131" y="5" width="3" height="90" fill="#000"/>
+        <rect x="137" y="5" width="6" height="90" fill="#000"/>
+        <rect x="146" y="5" width="2" height="90" fill="#000"/>
+        <rect x="151" y="5" width="4" height="90" fill="#000"/>
+        <rect x="158" y="5" width="3" height="90" fill="#000"/>
+        <rect x="164" y="5" width="7" height="90" fill="#000"/>
+        <rect x="174" y="5" width="2" height="90" fill="#000"/>
+        <rect x="179" y="5" width="5" height="90" fill="#000"/>
+        <rect x="187" y="5" width="3" height="90" fill="#000"/>
+        <rect x="193" y="5" width="4" height="90" fill="#000"/>
+        <rect x="200" y="5" width="2" height="90" fill="#000"/>
+        <rect x="205" y="5" width="6" height="90" fill="#000"/>
+        <rect x="214" y="5" width="3" height="90" fill="#000"/>
+        <rect x="220" y="5" width="5" height="90" fill="#000"/>
+        <rect x="228" y="5" width="2" height="90" fill="#000"/>
+        <rect x="233" y="5" width="4" height="90" fill="#000"/>
+        <rect x="240" y="5" width="7" height="90" fill="#000"/>
+        <rect x="250" y="5" width="3" height="90" fill="#000"/>
+        <rect x="256" y="5" width="2" height="90" fill="#000"/>
+        <rect x="261" y="5" width="5" height="90" fill="#000"/>
+        <rect x="269" y="5" width="4" height="90" fill="#000"/>
+        <rect x="276" y="5" width="2" height="90" fill="#000"/>
+        <rect x="281" y="5" width="6" height="90" fill="#000"/>
+        <rect x="290" y="5" width="4" height="90" fill="#000"/>
+      </svg>
+      <div class="scan-line"></div>
+    </div>
+    <p class="screenshot-warning">Screenshots won't get you in.</p>
+    <button class="apple-wallet-btn">
+      <div class="wallet-cards">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="wallet-btn-text">
+        <span>Add to</span>
+        <span>Apple Wallet</span>
+      </div>
+    </button>
+  </div>
+</div>
 
-              <!-- Seat Info -->
-              <tr>
-                <td style="padding:12px 16px; background-color:#fafafa; border-bottom:1px solid #eeeeee;">
-                  <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#111111;">
-                    Section 205, Row H, Seat 10 <br> 
-                    Section 205, Row H, Seat 11
-                  </p>
-                </td>
-              </tr>
+<!-- TICKET 2 -->
+<div class="ticket-card">
+  <div class="ticket-top">
+    <div class="ticket-label">Standard Ticket <div class="info-icon">i</div></div>
+    <div class="seat-grid">
+      <div class="seat-cell"><div class="label">SEC</div><div class="value">106</div></div>
+      <div class="seat-cell"><div class="label">ROW</div><div class="value">DD</div></div>
+      <div class="seat-cell"><div class="label">SEAT</div><div class="value">9</div></div>
+    </div>
+  </div>
+  <div class="floor-bar">Floor 106 Right</div>
+  <div class="barcode-area">
+    <div class="barcode-container">
+      <svg class="barcode-svg" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="300" height="100" fill="white"/>
+        <rect x="6" y="5" width="3" height="90" fill="#000"/>
+        <rect x="12" y="5" width="5" height="90" fill="#000"/>
+        <rect x="20" y="5" width="2" height="90" fill="#000"/>
+        <rect x="25" y="5" width="6" height="90" fill="#000"/>
+        <rect x="34" y="5" width="4" height="90" fill="#000"/>
+        <rect x="41" y="5" width="3" height="90" fill="#000"/>
+        <rect x="47" y="5" width="7" height="90" fill="#000"/>
+        <rect x="57" y="5" width="2" height="90" fill="#000"/>
+        <rect x="62" y="5" width="4" height="90" fill="#000"/>
+        <rect x="69" y="5" width="5" height="90" fill="#000"/>
+        <rect x="77" y="5" width="3" height="90" fill="#000"/>
+        <rect x="83" y="5" width="2" height="90" fill="#000"/>
+        <rect x="88" y="5" width="6" height="90" fill="#000"/>
+        <rect x="97" y="5" width="4" height="90" fill="#000"/>
+        <rect x="104" y="5" width="3" height="90" fill="#000"/>
+        <rect x="110" y="5" width="5" height="90" fill="#000"/>
+        <rect x="118" y="5" width="2" height="90" fill="#000"/>
+        <rect x="123" y="5" width="7" height="90" fill="#000"/>
+        <rect x="133" y="5" width="3" height="90" fill="#000"/>
+        <rect x="139" y="5" width="4" height="90" fill="#000"/>
+        <rect x="146" y="5" width="2" height="90" fill="#000"/>
+        <rect x="151" y="5" width="5" height="90" fill="#000"/>
+        <rect x="159" y="5" width="6" height="90" fill="#000"/>
+        <rect x="168" y="5" width="3" height="90" fill="#000"/>
+        <rect x="174" y="5" width="2" height="90" fill="#000"/>
+        <rect x="179" y="5" width="4" height="90" fill="#000"/>
+        <rect x="186" y="5" width="7" height="90" fill="#000"/>
+        <rect x="196" y="5" width="3" height="90" fill="#000"/>
+        <rect x="202" y="5" width="5" height="90" fill="#000"/>
+        <rect x="210" y="5" width="2" height="90" fill="#000"/>
+        <rect x="215" y="5" width="4" height="90" fill="#000"/>
+        <rect x="222" y="5" width="6" height="90" fill="#000"/>
+        <rect x="231" y="5" width="3" height="90" fill="#000"/>
+        <rect x="237" y="5" width="2" height="90" fill="#000"/>
+        <rect x="242" y="5" width="5" height="90" fill="#000"/>
+        <rect x="250" y="5" width="4" height="90" fill="#000"/>
+        <rect x="257" y="5" width="7" height="90" fill="#000"/>
+        <rect x="267" y="5" width="3" height="90" fill="#000"/>
+        <rect x="273" y="5" width="2" height="90" fill="#000"/>
+        <rect x="278" y="5" width="6" height="90" fill="#000"/>
+        <rect x="287" y="5" width="4" height="90" fill="#000"/>
+      </svg>
+      <div class="scan-line"></div>
+    </div>
+    <p class="screenshot-warning">Screenshots won't get you in.</p>
+    <button class="apple-wallet-btn">
+      <div class="wallet-cards">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="wallet-btn-text">
+        <span>Add to</span>
+        <span>Apple Wallet</span>
+      </div>
+    </button>
+  </div>
+</div>
 
-              <!-- Image -->
-              <tr>
-                <td align="center" bgcolor="#16213e" style="background-color:#16213e; padding:0;">
-                  <img src="https://i.imgur.com/VocK4yI.jpeg" alt="OKC Logo" style="width:100%; max-width:600px; height:auto; display:block; margin:0 auto;">
-                </td>
-              </tr>
+<!-- TICKET 3 -->
+<div class="ticket-card">
+  <div class="ticket-top">
+    <div class="ticket-label">Standard Ticket <div class="info-icon">i</div></div>
+    <div class="seat-grid">
+      <div class="seat-cell"><div class="label">SEC</div><div class="value">106</div></div>
+      <div class="seat-cell"><div class="label">ROW</div><div class="value">DD</div></div>
+      <div class="seat-cell"><div class="label">SEAT</div><div class="value">10</div></div>
+    </div>
+  </div>
+  <div class="floor-bar">Floor 106 Right</div>
+  <div class="barcode-area">
+    <div class="barcode-container">
+      <svg class="barcode-svg" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="300" height="100" fill="white"/>
+        <rect x="9" y="5" width="5" height="90" fill="#000"/>
+        <rect x="17" y="5" width="3" height="90" fill="#000"/>
+        <rect x="23" y="5" width="6" height="90" fill="#000"/>
+        <rect x="32" y="5" width="2" height="90" fill="#000"/>
+        <rect x="37" y="5" width="4" height="90" fill="#000"/>
+        <rect x="44" y="5" width="7" height="90" fill="#000"/>
+        <rect x="54" y="5" width="3" height="90" fill="#000"/>
+        <rect x="60" y="5" width="5" height="90" fill="#000"/>
+        <rect x="68" y="5" width="2" height="90" fill="#000"/>
+        <rect x="73" y="5" width="4" height="90" fill="#000"/>
+        <rect x="80" y="5" width="6" height="90" fill="#000"/>
+        <rect x="89" y="5" width="3" height="90" fill="#000"/>
+        <rect x="95" y="5" width="2" height="90" fill="#000"/>
+        <rect x="100" y="5" width="5" height="90" fill="#000"/>
+        <rect x="108" y="5" width="7" height="90" fill="#000"/>
+        <rect x="118" y="5" width="3" height="90" fill="#000"/>
+        <rect x="124" y="5" width="4" height="90" fill="#000"/>
+        <rect x="131" y="5" width="2" height="90" fill="#000"/>
+        <rect x="136" y="5" width="6" height="90" fill="#000"/>
+        <rect x="145" y="5" width="4" height="90" fill="#000"/>
+        <rect x="152" y="5" width="3" height="90" fill="#000"/>
+        <rect x="158" y="5" width="5" height="90" fill="#000"/>
+        <rect x="166" y="5" width="2" height="90" fill="#000"/>
+        <rect x="171" y="5" width="7" height="90" fill="#000"/>
+        <rect x="181" y="5" width="3" height="90" fill="#000"/>
+        <rect x="187" y="5" width="4" height="90" fill="#000"/>
+        <rect x="194" y="5" width="6" height="90" fill="#000"/>
+        <rect x="203" y="5" width="2" height="90" fill="#000"/>
+        <rect x="208" y="5" width="5" height="90" fill="#000"/>
+        <rect x="216" y="5" width="3" height="90" fill="#000"/>
+        <rect x="222" y="5" width="4" height="90" fill="#000"/>
+        <rect x="229" y="5" width="7" height="90" fill="#000"/>
+        <rect x="239" y="5" width="2" height="90" fill="#000"/>
+        <rect x="244" y="5" width="5" height="90" fill="#000"/>
+        <rect x="252" y="5" width="3" height="90" fill="#000"/>
+        <rect x="258" y="5" width="6" height="90" fill="#000"/>
+        <rect x="267" y="5" width="4" height="90" fill="#000"/>
+        <rect x="274" y="5" width="2" height="90" fill="#000"/>
+        <rect x="279" y="5" width="5" height="90" fill="#000"/>
+        <rect x="287" y="5" width="7" height="90" fill="#000"/>
+      </svg>
+      <div class="scan-line"></div>
+    </div>
+    <p class="screenshot-warning">Screenshots won't get you in.</p>
+    <button class="apple-wallet-btn">
+      <div class="wallet-cards">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="wallet-btn-text">
+        <span>Add to</span>
+        <span>Apple Wallet</span>
+      </div>
+    </button>
+  </div>
+</div>
 
-              <!-- Accept Button -->
-              <tr>
-                <td style="padding:40px 16px 16px; background-color:#ffffff;">
-                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                    <tr>
-                      <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; border-radius:4px;">
-                        <a href="#" style="display:block; padding:14px 20px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:#ffffff; text-decoration:none;">
-                          ACCEPT TICKETS
-                        </a>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
+<!-- TICKET 4 -->
+<div class="ticket-card">
+  <div class="ticket-top">
+    <div class="ticket-label">Standard Ticket <div class="info-icon">i</div></div>
+    <div class="seat-grid">
+      <div class="seat-cell"><div class="label">SEC</div><div class="value">106</div></div>
+      <div class="seat-cell"><div class="label">ROW</div><div class="value">DD</div></div>
+      <div class="seat-cell"><div class="label">SEAT</div><div class="value">11</div></div>
+    </div>
+  </div>
+  <div class="floor-bar">Floor 106 Right</div>
+  <div class="barcode-area">
+    <div class="barcode-container">
+      <svg class="barcode-svg" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="300" height="100" fill="white"/>
+        <rect x="7" y="5" width="6" height="90" fill="#000"/>
+        <rect x="16" y="5" width="2" height="90" fill="#000"/>
+        <rect x="21" y="5" width="4" height="90" fill="#000"/>
+        <rect x="28" y="5" width="7" height="90" fill="#000"/>
+        <rect x="38" y="5" width="3" height="90" fill="#000"/>
+        <rect x="44" y="5" width="5" height="90" fill="#000"/>
+        <rect x="52" y="5" width="2" height="90" fill="#000"/>
+        <rect x="57" y="5" width="4" height="90" fill="#000"/>
+        <rect x="64" y="5" width="6" height="90" fill="#000"/>
+        <rect x="73" y="5" width="3" height="90" fill="#000"/>
+        <rect x="79" y="5" width="7" height="90" fill="#000"/>
+        <rect x="89" y="5" width="2" height="90" fill="#000"/>
+        <rect x="94" y="5" width="5" height="90" fill="#000"/>
+        <rect x="102" y="5" width="4" height="90" fill="#000"/>
+        <rect x="109" y="5" width="3" height="90" fill="#000"/>
+        <rect x="115" y="5" width="6" height="90" fill="#000"/>
+        <rect x="124" y="5" width="2" height="90" fill="#000"/>
+        <rect x="129" y="5" width="5" height="90" fill="#000"/>
+        <rect x="137" y="5" width="7" height="90" fill="#000"/>
+        <rect x="147" y="5" width="3" height="90" fill="#000"/>
+        <rect x="153" y="5" width="4" height="90" fill="#000"/>
+        <rect x="160" y="5" width="2" height="90" fill="#000"/>
+        <rect x="165" y="5" width="6" height="90" fill="#000"/>
+        <rect x="174" y="5" width="5" height="90" fill="#000"/>
+        <rect x="182" y="5" width="3" height="90" fill="#000"/>
+        <rect x="188" y="5" width="7" height="90" fill="#000"/>
+        <rect x="198" y="5" width="2" height="90" fill="#000"/>
+        <rect x="203" y="5" width="4" height="90" fill="#000"/>
+        <rect x="210" y="5" width="5" height="90" fill="#000"/>
+        <rect x="218" y="5" width="3" height="90" fill="#000"/>
+        <rect x="224" y="5" width="6" height="90" fill="#000"/>
+        <rect x="233" y="5" width="2" height="90" fill="#000"/>
+        <rect x="238" y="5" width="4" height="90" fill="#000"/>
+        <rect x="245" y="5" width="7" height="90" fill="#000"/>
+        <rect x="255" y="5" width="3" height="90" fill="#000"/>
+        <rect x="261" y="5" width="5" height="90" fill="#000"/>
+        <rect x="269" y="5" width="2" height="90" fill="#000"/>
+        <rect x="274" y="5" width="6" height="90" fill="#000"/>
+        <rect x="283" y="5" width="4" height="90" fill="#000"/>
+        <rect x="290" y="5" width="3" height="90" fill="#000"/>
+      </svg>
+      <div class="scan-line"></div>
+    </div>
+    <p class="screenshot-warning">Screenshots won't get you in.</p>
+    <button class="apple-wallet-btn">
+      <div class="wallet-cards">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="wallet-btn-text">
+        <span>Add to</span>
+        <span>Apple Wallet</span>
+      </div>
+    </button>
+  </div>
+</div>
+```
 
-            </table>
-          </td>
-        </tr>
+  </div><!-- end swipe-track -->
 
-        <!-- ===== FINE PRINT ===== -->
-        <tr>
-          <td style="padding:16px 20px; border-top:1px solid #eeeeee; border-bottom:1px solid #eeeeee;">
-            <p style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
-              By clicking "ACCEPT TICKETS", you agree to our <a href="https://legal.ticketmaster.com/terms-of-use" style="color:#026cdf; text-decoration:none;">Terms of Use</a> and any applicable ticket back terms.
-            </p>
-            <p style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
-              If the tickets were obtained fraudulently by the person transferring them, they may be cancelled at any time, removed from your account and no longer available for use.
-            </p>
-            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#888888; line-height:1.6;">
-              This email is <strong>NOT</strong> your ticket.
-            </p>
-          </td>
-        </tr>
+  <!-- Dot indicators -->
 
-        <!-- ===== TRANSFER STATUS ===== -->
-        <tr>
-          <td style="padding:16px 20px 28px;">
-            <p style="margin:0 0 6px; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#111111;">Transfer Status: Received</p>
-            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; line-height:1.6;">
-              You got 1 ticket! You're one step closer to seeing the show. <a href="#" style="color:#026cdf; text-decoration:none;">View transfer details</a> to confirm your seat or learn more about the process.
-            </p>
-          </td>
-        </tr>
+  <div style="position:relative; height:30px; margin-top:14px;">
+    <div class="swipe-hint" id="dotIndicator">
+      <div class="swipe-hint-dot active" data-i="0"></div>
+      <div class="swipe-hint-dot" data-i="1"></div>
+      <div class="swipe-hint-dot" data-i="2"></div>
+      <div class="swipe-hint-dot" data-i="3"></div>
+    </div>
+  </div>
+</div>
 
-        <!-- ===== MESSAGE FROM SENDER ===== -->
-        <tr>
-          <td style="padding:0 20px 20px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fdf0f5; border:1px solid #f0d0e0; border-radius:6px;">
-              <tr>
-                <td style="padding:16px 18px;">
-                  <p style="margin:0 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; color:#c0406e;">A Message from John...</p>
-                  <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#c0406e; line-height:1.5; font-style:italic;">Enjoy your event</p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+<!-- PAGINATION -->
 
-        <!-- ===== WHAT'S NEXT ===== -->
-        <tr>
-          <td style="padding:0 20px 20px;">
-            <p style="margin:0 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:700; color:#111111;">What's Next?</p>
-            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#444444; line-height:1.7;">
-              You'll need to first accept the ticket transfer so the order is moved to your Ticketmaster account. Once the transfer is complete, we'll let the sender know you're all set. To accept the tickets, have your Ticketmaster password handy and login to your Ticketmaster account, or create a <a href="https://www.ticketmaster.com/member" style="color:#026cdf; text-decoration:none;">new one</a>. Visit <a href="#" style="color:#026cdf; text-decoration:none;">Event Details</a> to view your ticket(s).
-            </p>
-          </td>
-        </tr>
+<div class="pagination">
+  <div class="arrow" id="prevBtn">&#8249;</div>
+  <div class="page-text" id="pageText">1 of 4</div>
+  <div class="arrow active" id="nextBtn">&#8250;</div>
+</div>
 
-        <!-- ===== HELP TEXT ===== -->
-        <tr>
-          <td align="center" style="padding:10px 20px 28px;">
-            <p style="margin:0 0 4px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; text-align:center;">We're here to help.</p>
-            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; text-align:center; line-height:1.6;">
-              If you have any questions, please <a href="https://help.ticketmaster.com/s/article/How-do-I-contact-Customer-Service" style="color:#026cdf; text-decoration:none;">contact</a><br />Ticketmaster Fan Support.
-            </p>
-          </td>
-        </tr>
+<!-- BOTTOM BUTTONS -->
 
-        <!-- ===== BLUE FOOTER ===== -->
-        <tr>
-          <td align="center" bgcolor="#026cdf" style="background-color:#026cdf; padding:28px 20px;">
-            <p style="margin:0 0 12px; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#ffffff; text-align:center;">
-              <a href="#" style="color:#ffffff; text-decoration:underline;">Ticketmaster Att: Fan Support</a>
-            </p>
-            <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#cce0ff; text-align:center;">
-              &copy; 2026 Ticketmaster. All rights reserved.
-            </p>
-          </td>
-        </tr>
+<div class="bottom-actions">
+  <button class="bottom-btn">Transfer</button>
+  <button class="bottom-btn">Sell</button>
+</div>
 
-      </table>
-      <!-- /Email container -->
+<script>
+  const track = document.getElementById('swipeTrack');
+  const pageText = document.getElementById('pageText');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dots = document.querySelectorAll('.swipe-hint-dot');
+  const TOTAL = 4;
+  let current = 0;
+  let startX = 0, isDragging = false, dragDelta = 0;
 
-    </td>
-  </tr>
-</table>
+  function goTo(idx) {
+    idx = Math.max(0, Math.min(TOTAL - 1, idx));
+    current = idx;
+    track.style.transition = 'transform 0.38s cubic-bezier(0.4,0,0.2,1)';
+    track.style.transform = `translateX(calc(-${current * 100}% - ${current * 0}px))`;
+    pageText.textContent = `${current + 1} of ${TOTAL}`;
+    prevBtn.className = 'arrow' + (current > 0 ? ' active' : '');
+    nextBtn.className = 'arrow' + (current < TOTAL - 1 ? ' active' : '');
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
 
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
 
+  // Touch swipe
+  const wrapper = document.getElementById('swipeWrapper');
+  wrapper.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    dragDelta = 0;
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  wrapper.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    dragDelta = e.touches[0].clientX - startX;
+    const baseOffset = current * -100;
+    const pxDelta = dragDelta;
+    const w = wrapper.offsetWidth;
+    track.style.transform = `translateX(calc(${baseOffset}% + ${pxDelta}px))`;
+  }, { passive: true });
+
+  wrapper.addEventListener('touchend', () => {
+    isDragging = false;
+    const w = wrapper.offsetWidth;
+    if (dragDelta < -50 && current < TOTAL - 1) goTo(current + 1);
+    else if (dragDelta > 50 && current > 0) goTo(current - 1);
+    else goTo(current);
+  });
+
+  // Mouse drag for desktop testing
+  wrapper.addEventListener('mousedown', e => {
+    startX = e.clientX;
+    isDragging = true;
+    dragDelta = 0;
+    track.style.transition = 'none';
+  });
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    dragDelta = e.clientX - startX;
+    const baseOffset = current * -100;
+    track.style.transform = `translateX(calc(${baseOffset}% + ${dragDelta}px))`;
+  });
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    if (dragDelta < -50 && current < TOTAL - 1) goTo(current + 1);
+    else if (dragDelta > 50 && current > 0) goTo(current - 1);
+    else goTo(current);
+  });
+
+  goTo(0);
+</script>
 
 </body>
 </html>
